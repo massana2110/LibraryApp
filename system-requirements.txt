@@ -1,0 +1,16 @@
+REQUERIMIENTOS PROYECTO N-CAPAS
+
+1. Profesor solo podrá tener acceso de consulta a la biblioteca.
+2. 2 personas administradoras, quienes se encargan de todo el material fisico de la biblioteca, exclusivamente libros. (Acceso total al sistema).
+3. Operaciones:
+	- Consultar todo el material disponible.
+	- Ingreso de nuevo material.
+	- Actualizar informacion.
+	- Eliminar registros.
+
+4. Modulo de prestamo y devolucion: 
+	- Acceden unicamente los administradores de la biblioteca.
+	- El material solo se podrá prestar a profesores registrados en el sistema.
+	
+5. Modulo de reportes:
+	- Tendrá únicamente las opciones de listar todos los libros de la biblioteca y listar todos los prestamos activos.
