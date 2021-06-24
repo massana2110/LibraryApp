@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A936397B-4D81-43A6-AAF0-C9EABBFB6DFC}</ProjectGuid>
+    <ProjectGuid>{7DD07977-BBCF-4115-9D29-95E8C318B84F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LibrarySystem.Data</RootNamespace>
@@ -31,17 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,62 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="EFLibrary.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EFLibrary.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFLibrary.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EFLibrary.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFLibrary.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EFLibrary.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="libros.cs">
-      <DependentUpon>EFLibrary.tt</DependentUpon>
-    </Compile>
-    <Compile Include="prestamos.cs">
-      <DependentUpon>EFLibrary.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="roles.cs">
-      <DependentUpon>EFLibrary.tt</DependentUpon>
-    </Compile>
-    <Compile Include="usuarios.cs">
-      <DependentUpon>EFLibrary.tt</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="EFLibrary.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EFLibrary.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="EFLibrary.edmx.diagram">
-      <DependentUpon>EFLibrary.edmx</DependentUpon>
-    </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="EFLibrary.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EFLibrary.Context.cs</LastGenOutput>
-      <DependentUpon>EFLibrary.edmx</DependentUpon>
-    </Content>
-    <Content Include="EFLibrary.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EFLibrary.edmx</DependentUpon>
-      <LastGenOutput>EFLibrary.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LibrarySystem.Entities\LibrarySystem.Entities.csproj">
