@@ -16,7 +16,11 @@ namespace LibrarySystem.Presentation
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
+            Application.Run(new LoginForm());
+=======
             Application.Run(new FmPrincipal());
+>>>>>>> development
         }
     }
 }
