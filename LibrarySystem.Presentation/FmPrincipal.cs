@@ -53,7 +53,6 @@ namespace LibrarySystem.Presentation
         {
             this.Close();
         }
-
         private void CutToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
@@ -113,6 +112,16 @@ namespace LibrarySystem.Presentation
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void FmPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

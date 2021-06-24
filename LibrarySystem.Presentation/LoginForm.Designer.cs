@@ -48,6 +48,7 @@ namespace LibrarySystem.Presentation
             this.BtnLogin.TabIndex = 0;
             this.BtnLogin.Text = "Iniciar Sesión";
             this.BtnLogin.UseVisualStyleBackColor = false;
+            this.BtnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
             // 
             // LblEmail
             // 

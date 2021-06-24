@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace LibrarySystem.Presentation
 {
     public partial class LoginForm : Form
@@ -17,5 +18,12 @@ namespace LibrarySystem.Presentation
             InitializeComponent();
         }
 
+        private void BtnLogin_Click(object sender, EventArgs e)
+        {
+            // TODO: Cambiar logica para que funcione el login correctamente
+            FmPrincipal mainForm = new FmPrincipal();
+            mainForm.Show();
+            this.Hide();
+        }
     }
 }
