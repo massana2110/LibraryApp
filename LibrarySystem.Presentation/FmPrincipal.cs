@@ -123,5 +123,12 @@ namespace LibrarySystem.Presentation
         {
             Application.Exit();
         }
+
+        private void toolStripLabel1_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Hide();
+        }
     }
 }
