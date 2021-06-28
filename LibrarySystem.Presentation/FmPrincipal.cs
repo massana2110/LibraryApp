@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibrarySystem.Business;
 
 namespace LibrarySystem.Presentation
 {
@@ -18,6 +19,35 @@ namespace LibrarySystem.Presentation
         {
             InitializeComponent();
         }
+
+
+        //ESTO A CAMBIAR SE USARA "BUSCAR" No listar
+        private void ListarPrestamos()
+        {
+            try
+            {
+                DgvListPrestamo.DataSource = BPrestamo.Listar();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void BuscarPrestamos(string Id)
+        {
+            try
+            {
+                DgvListPrestamo.DataSource = BPrestamo.Buscar(Id);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+
+
 
         private void ShowNewForm(object sender, EventArgs e)
         {
@@ -116,7 +146,7 @@ namespace LibrarySystem.Presentation
 
         private void FmPrincipal_Load(object sender, EventArgs e)
         {
-
+            this.ListarPrestamos();
         }
 
         private void FmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -129,6 +159,21 @@ namespace LibrarySystem.Presentation
             LoginForm loginForm = new LoginForm();
             loginForm.Show();
             this.Hide();
+        }
+
+        private void DgvListProfesor_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                String id = Convert.ToString(DgvListProfesor.CurrentRow.Cells["ID"].Value);
+                this.BuscarPrestamos(id);
+
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Seleccione celda");
+            }
         }
     }
 }
