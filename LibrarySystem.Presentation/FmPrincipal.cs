@@ -22,11 +22,14 @@ namespace LibrarySystem.Presentation
 
 
         //ESTO A CAMBIAR SE USARA "BUSCAR" No listar
-        private void ListarPrestamos()
+        private void BuscarLibros(string identificador)
         {
             try
             {
-                DgvListPrestamo.DataSource = BPrestamo.Listar();
+                if (CmbLibro.Text == "Codigo") { DgvListLibro.DataSource = BLibro.BuscarId(identificador); }
+                else if (CmbLibro.Text == "Titulo"){ DgvListLibro.DataSource = BLibro.BuscarTitulo(identificador); }
+                else if (CmbLibro.Text == "Autor") { DgvListLibro.DataSource = BLibro.BuscarAutor(identificador); }
+                this.FormatoLibros();
             }
             catch(Exception ex)
             {
@@ -39,6 +42,7 @@ namespace LibrarySystem.Presentation
             try
             {
                 DgvListPrestamo.DataSource = BPrestamo.Buscar(Id);
+                
             }
             catch (Exception ex)
             {
@@ -59,9 +63,27 @@ namespace LibrarySystem.Presentation
             }
         }
 
+        private void FormatoLibros()
+        {
+            DgvListLibro.Columns[0].Width = 50;
+            DgvListLibro.Columns[1].Visible = false;
+            DgvListLibro.Columns[2].Width = 100;
+            DgvListLibro.Columns[3].Width = 100;
+            DgvListLibro.Columns[4].Width = 100;
+            DgvListLibro.Columns[5].Visible = false;
+            DgvListLibro.Columns[6].Visible = false;
+            DgvListLibro.Columns[7].Visible = false;
+            DgvListLibro.Columns[8].Width = 100;
+            DgvListLibro.Columns[9].Visible = false;
+            DgvListLibro.Columns[10].Visible = false;
+            DgvListLibro.Columns[11].Visible = false;
+            DgvListLibro.Columns[12].Width = 150;
+
+        }
+
         private void FormatoProfesores()
         {
-            DgvListProfesor.Columns[0].Visible = true;
+            DgvListProfesor.Columns[0].Width = 50;
             DgvListProfesor.Columns[1].Width = 100;
             DgvListProfesor.Columns[2].Width=100;
             DgvListProfesor.Columns[3].Width=200;
@@ -166,7 +188,7 @@ namespace LibrarySystem.Presentation
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            this.BuscarLibros(TxtLibro.Text);
         }
 
         private void FmPrincipal_Load(object sender, EventArgs e)
@@ -204,6 +226,11 @@ namespace LibrarySystem.Presentation
         private void button2_Click(object sender, EventArgs e)
         {
             this.BuscarProfesor(TxtProfesor.Text);
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

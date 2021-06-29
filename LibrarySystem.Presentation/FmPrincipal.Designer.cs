@@ -48,8 +48,8 @@ namespace LibrarySystem.Presentation
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.DgvListLibro = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.CmbLibro = new System.Windows.Forms.ComboBox();
+            this.TxtLibro = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -234,8 +234,8 @@ namespace LibrarySystem.Presentation
             // 
             this.groupBox1.Controls.Add(this.DgvListLibro);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.CmbLibro);
+            this.groupBox1.Controls.Add(this.TxtLibro);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -247,6 +247,7 @@ namespace LibrarySystem.Presentation
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Busqueda de libro";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // DgvListLibro
             // 
@@ -271,23 +272,27 @@ namespace LibrarySystem.Presentation
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // comboBox1
+            // CmbLibro
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(367, 66);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(109, 25);
-            this.comboBox1.TabIndex = 8;
+            this.CmbLibro.FormattingEnabled = true;
+            this.CmbLibro.Items.AddRange(new object[] {
+            "Codigo",
+            "Titulo",
+            "Autor"});
+            this.CmbLibro.Location = new System.Drawing.Point(367, 66);
+            this.CmbLibro.Margin = new System.Windows.Forms.Padding(2);
+            this.CmbLibro.Name = "CmbLibro";
+            this.CmbLibro.Size = new System.Drawing.Size(109, 25);
+            this.CmbLibro.TabIndex = 8;
             // 
-            // textBox1
+            // TxtLibro
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 66);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(311, 23);
-            this.textBox1.TabIndex = 7;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.TxtLibro.Location = new System.Drawing.Point(16, 66);
+            this.TxtLibro.Margin = new System.Windows.Forms.Padding(2);
+            this.TxtLibro.Name = "TxtLibro";
+            this.TxtLibro.Size = new System.Drawing.Size(311, 23);
+            this.TxtLibro.TabIndex = 7;
+            this.TxtLibro.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label4
             // 
@@ -400,11 +405,11 @@ namespace LibrarySystem.Presentation
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtLibro;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox TxtProfesor;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CmbLibro;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button BtnBuscarProfesor;
         private System.Windows.Forms.DataGridView DgvListPrestamo;
