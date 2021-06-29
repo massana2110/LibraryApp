@@ -124,6 +124,7 @@ namespace LibrarySystem.Presentation
             this.button3.TabIndex = 10;
             this.button3.Text = "Registrar Prestamo";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label1
             // 
@@ -197,6 +198,7 @@ namespace LibrarySystem.Presentation
             this.DgvListProfesor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListProfesor.Size = new System.Drawing.Size(473, 145);
             this.DgvListProfesor.TabIndex = 11;
+            this.DgvListProfesor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListProfesor_CellContentClick);
             this.DgvListProfesor.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListProfesor_CellDoubleClick);
             // 
             // BtnBuscarProfesor
@@ -257,6 +259,7 @@ namespace LibrarySystem.Presentation
             this.DgvListLibro.Name = "DgvListLibro";
             this.DgvListLibro.RowHeadersWidth = 51;
             this.DgvListLibro.RowTemplate.Height = 24;
+            this.DgvListLibro.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListLibro.Size = new System.Drawing.Size(626, 145);
             this.DgvListLibro.TabIndex = 10;
             // 

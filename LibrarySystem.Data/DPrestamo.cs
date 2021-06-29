@@ -39,7 +39,7 @@ namespace LibrarySystem.Data
             try
             {
                 SqlCon = Connection.getInstance().createConnection();
-                SqlCommand Command = new SqlCommand("prestamo_buscar", SqlCon);
+                SqlCommand Command = new SqlCommand("prestamo_buscar2", SqlCon);
                 Command.CommandType = CommandType.StoredProcedure;
                 Command.Parameters.Add("@valor", SqlDbType.VarChar).Value = Valor;
                 SqlCon.Open();

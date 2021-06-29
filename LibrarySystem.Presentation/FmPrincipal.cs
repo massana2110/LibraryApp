@@ -21,7 +21,7 @@ namespace LibrarySystem.Presentation
         }
 
 
-        //ESTO A CAMBIAR SE USARA "BUSCAR" No listar
+        
         private void BuscarLibros(string identificador)
         {
             try
@@ -189,6 +189,7 @@ namespace LibrarySystem.Presentation
         private void button1_Click(object sender, EventArgs e)
         {
             this.BuscarLibros(TxtLibro.Text);
+
         }
 
         private void FmPrincipal_Load(object sender, EventArgs e)
@@ -210,10 +211,13 @@ namespace LibrarySystem.Presentation
 
         private void DgvListProfesor_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             try
             {
+                //recupero valor string de la celda "id"
                 String id = Convert.ToString(DgvListProfesor.CurrentRow.Cells["ID"].Value);
                 this.BuscarPrestamos(id);
+
 
 
             }
@@ -226,11 +230,23 @@ namespace LibrarySystem.Presentation
         private void button2_Click(object sender, EventArgs e)
         {
             this.BuscarProfesor(TxtProfesor.Text);
+            
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void DgvListProfesor_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+           
         }
     }
 }
