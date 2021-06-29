@@ -39,17 +39,17 @@ namespace LibrarySystem.Presentation
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.DgvListPrestamo = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.DgvListProfesor = new System.Windows.Forms.DataGridView();
+            this.BtnBuscarProfesor = new System.Windows.Forms.Button();
+            this.TxtProfesor = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DgvListLibro = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.CmbLibro = new System.Windows.Forms.ComboBox();
+            this.TxtLibro = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -60,11 +60,11 @@ namespace LibrarySystem.Presentation
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvListPrestamo)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvListProfesor)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvListLibro)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -124,6 +124,7 @@ namespace LibrarySystem.Presentation
             this.button3.TabIndex = 10;
             this.button3.Text = "Registrar Prestamo";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label1
             // 
@@ -147,7 +148,7 @@ namespace LibrarySystem.Presentation
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.dataGridView3);
+            this.groupBox3.Controls.Add(this.DgvListPrestamo);
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(7, 318);
@@ -159,22 +160,22 @@ namespace LibrarySystem.Presentation
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Prestamos activos de profesor";
             // 
-            // dataGridView3
+            // DgvListPrestamo
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(16, 41);
-            this.dataGridView3.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowHeadersWidth = 51;
-            this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(859, 176);
-            this.dataGridView3.TabIndex = 11;
+            this.DgvListPrestamo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvListPrestamo.Location = new System.Drawing.Point(16, 41);
+            this.DgvListPrestamo.Margin = new System.Windows.Forms.Padding(2);
+            this.DgvListPrestamo.Name = "DgvListPrestamo";
+            this.DgvListPrestamo.RowHeadersWidth = 51;
+            this.DgvListPrestamo.RowTemplate.Height = 24;
+            this.DgvListPrestamo.Size = new System.Drawing.Size(859, 176);
+            this.DgvListPrestamo.TabIndex = 11;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dataGridView2);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.DgvListProfesor);
+            this.groupBox2.Controls.Add(this.BtnBuscarProfesor);
+            this.groupBox2.Controls.Add(this.TxtProfesor);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(688, 24);
@@ -186,35 +187,39 @@ namespace LibrarySystem.Presentation
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Busqueda de profesor";
             // 
-            // dataGridView2
+            // DgvListProfesor
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(12, 109);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(473, 145);
-            this.dataGridView2.TabIndex = 11;
+            this.DgvListProfesor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvListProfesor.Location = new System.Drawing.Point(12, 109);
+            this.DgvListProfesor.Margin = new System.Windows.Forms.Padding(2);
+            this.DgvListProfesor.Name = "DgvListProfesor";
+            this.DgvListProfesor.RowHeadersWidth = 51;
+            this.DgvListProfesor.RowTemplate.Height = 24;
+            this.DgvListProfesor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvListProfesor.Size = new System.Drawing.Size(473, 145);
+            this.DgvListProfesor.TabIndex = 11;
+            this.DgvListProfesor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListProfesor_CellContentClick);
+            this.DgvListProfesor.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListProfesor_CellDoubleClick);
             // 
-            // button2
+            // BtnBuscarProfesor
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(384, 59);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(101, 30);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Buscar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.BtnBuscarProfesor.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnBuscarProfesor.Location = new System.Drawing.Point(384, 59);
+            this.BtnBuscarProfesor.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnBuscarProfesor.Name = "BtnBuscarProfesor";
+            this.BtnBuscarProfesor.Size = new System.Drawing.Size(101, 30);
+            this.BtnBuscarProfesor.TabIndex = 10;
+            this.BtnBuscarProfesor.Text = "Buscar";
+            this.BtnBuscarProfesor.UseVisualStyleBackColor = true;
+            this.BtnBuscarProfesor.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox2
+            // TxtProfesor
             // 
-            this.textBox2.Location = new System.Drawing.Point(16, 66);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(301, 23);
-            this.textBox2.TabIndex = 8;
+            this.TxtProfesor.Location = new System.Drawing.Point(16, 66);
+            this.TxtProfesor.Margin = new System.Windows.Forms.Padding(2);
+            this.TxtProfesor.Name = "TxtProfesor";
+            this.TxtProfesor.Size = new System.Drawing.Size(301, 23);
+            this.TxtProfesor.TabIndex = 8;
             // 
             // label3
             // 
@@ -229,10 +234,10 @@ namespace LibrarySystem.Presentation
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.DgvListLibro);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.CmbLibro);
+            this.groupBox1.Controls.Add(this.TxtLibro);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -244,17 +249,19 @@ namespace LibrarySystem.Presentation
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Busqueda de libro";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // dataGridView1
+            // DgvListLibro
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 109);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(626, 145);
-            this.dataGridView1.TabIndex = 10;
+            this.DgvListLibro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvListLibro.Location = new System.Drawing.Point(16, 109);
+            this.DgvListLibro.Margin = new System.Windows.Forms.Padding(2);
+            this.DgvListLibro.Name = "DgvListLibro";
+            this.DgvListLibro.RowHeadersWidth = 51;
+            this.DgvListLibro.RowTemplate.Height = 24;
+            this.DgvListLibro.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvListLibro.Size = new System.Drawing.Size(626, 145);
+            this.DgvListLibro.TabIndex = 10;
             // 
             // button1
             // 
@@ -268,23 +275,27 @@ namespace LibrarySystem.Presentation
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // comboBox1
+            // CmbLibro
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(367, 66);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(109, 25);
-            this.comboBox1.TabIndex = 8;
+            this.CmbLibro.FormattingEnabled = true;
+            this.CmbLibro.Items.AddRange(new object[] {
+            "Codigo",
+            "Titulo",
+            "Autor"});
+            this.CmbLibro.Location = new System.Drawing.Point(367, 66);
+            this.CmbLibro.Margin = new System.Windows.Forms.Padding(2);
+            this.CmbLibro.Name = "CmbLibro";
+            this.CmbLibro.Size = new System.Drawing.Size(109, 25);
+            this.CmbLibro.TabIndex = 8;
             // 
-            // textBox1
+            // TxtLibro
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 66);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(311, 23);
-            this.textBox1.TabIndex = 7;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.TxtLibro.Location = new System.Drawing.Point(16, 66);
+            this.TxtLibro.Margin = new System.Windows.Forms.Padding(2);
+            this.TxtLibro.Name = "TxtLibro";
+            this.TxtLibro.Size = new System.Drawing.Size(311, 23);
+            this.TxtLibro.TabIndex = 7;
+            this.TxtLibro.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label4
             // 
@@ -369,13 +380,13 @@ namespace LibrarySystem.Presentation
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvListPrestamo)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvListProfesor)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvListLibro)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -397,16 +408,16 @@ namespace LibrarySystem.Presentation
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtLibro;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox TxtProfesor;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CmbLibro;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button BtnBuscarProfesor;
+        private System.Windows.Forms.DataGridView DgvListPrestamo;
+        private System.Windows.Forms.DataGridView DgvListProfesor;
+        private System.Windows.Forms.DataGridView DgvListLibro;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStrip toolStrip1;
     }

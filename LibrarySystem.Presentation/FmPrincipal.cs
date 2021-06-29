@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibrarySystem.Business;
 
 namespace LibrarySystem.Presentation
 {
@@ -18,6 +19,82 @@ namespace LibrarySystem.Presentation
         {
             InitializeComponent();
         }
+
+
+        
+        private void BuscarLibros(string identificador)
+        {
+            try
+            {
+                if (CmbLibro.Text == "Codigo") { DgvListLibro.DataSource = BLibro.BuscarId(identificador); }
+                else if (CmbLibro.Text == "Titulo"){ DgvListLibro.DataSource = BLibro.BuscarTitulo(identificador); }
+                else if (CmbLibro.Text == "Autor") { DgvListLibro.DataSource = BLibro.BuscarAutor(identificador); }
+                this.FormatoLibros();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void BuscarPrestamos(string Id)
+        {
+            try
+            {
+                DgvListPrestamo.DataSource = BPrestamo.Buscar(Id);
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void BuscarProfesor(string identificador)
+        {
+            try
+            {
+                DgvListProfesor.DataSource = BUsuario.BuscarProfesor(identificador);
+                this.FormatoProfesores();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void FormatoLibros()
+        {
+            DgvListLibro.Columns[0].Width = 50;
+            DgvListLibro.Columns[1].Visible = false;
+            DgvListLibro.Columns[2].Width = 100;
+            DgvListLibro.Columns[3].Width = 100;
+            DgvListLibro.Columns[4].Width = 100;
+            DgvListLibro.Columns[5].Visible = false;
+            DgvListLibro.Columns[6].Visible = false;
+            DgvListLibro.Columns[7].Visible = false;
+            DgvListLibro.Columns[8].Width = 100;
+            DgvListLibro.Columns[9].Visible = false;
+            DgvListLibro.Columns[10].Visible = false;
+            DgvListLibro.Columns[11].Visible = false;
+            DgvListLibro.Columns[12].Width = 150;
+
+        }
+
+        private void FormatoProfesores()
+        {
+            DgvListProfesor.Columns[0].Width = 50;
+            DgvListProfesor.Columns[1].Width = 100;
+            DgvListProfesor.Columns[2].Width=100;
+            DgvListProfesor.Columns[3].Width=200;
+            DgvListProfesor.Columns[4].Visible = false;
+            DgvListProfesor.Columns[5].Visible = false;
+        }
+
+
+
+
+
 
         private void ShowNewForm(object sender, EventArgs e)
         {
@@ -111,12 +188,13 @@ namespace LibrarySystem.Presentation
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.BuscarLibros(TxtLibro.Text);
 
         }
 
         private void FmPrincipal_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         private void FmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -129,6 +207,46 @@ namespace LibrarySystem.Presentation
             LoginForm loginForm = new LoginForm();
             loginForm.Show();
             this.Hide();
+        }
+
+        private void DgvListProfesor_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            try
+            {
+                //recupero valor string de la celda "id"
+                String id = Convert.ToString(DgvListProfesor.CurrentRow.Cells["ID"].Value);
+                this.BuscarPrestamos(id);
+
+
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Seleccione celda");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.BuscarProfesor(TxtProfesor.Text);
+            
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DgvListProfesor_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+           
         }
     }
 }
