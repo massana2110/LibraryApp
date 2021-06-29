@@ -46,6 +46,31 @@ namespace LibrarySystem.Presentation
             }
         }
 
+        private void BuscarProfesor(string identificador)
+        {
+            try
+            {
+                DgvListProfesor.DataSource = BUsuario.BuscarProfesor(identificador);
+                this.FormatoProfesores();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void FormatoProfesores()
+        {
+            DgvListProfesor.Columns[0].Visible = true;
+            DgvListProfesor.Columns[1].Width = 100;
+            DgvListProfesor.Columns[2].Width=100;
+            DgvListProfesor.Columns[3].Width=200;
+            DgvListProfesor.Columns[4].Visible = false;
+            DgvListProfesor.Columns[5].Visible = false;
+        }
+
+
+
 
 
 
@@ -146,7 +171,7 @@ namespace LibrarySystem.Presentation
 
         private void FmPrincipal_Load(object sender, EventArgs e)
         {
-            this.ListarPrestamos();
+           
         }
 
         private void FmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -174,6 +199,11 @@ namespace LibrarySystem.Presentation
             {
                 MessageBox.Show("Seleccione celda");
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.BuscarProfesor(TxtProfesor.Text);
         }
     }
 }

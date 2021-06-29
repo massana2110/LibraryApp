@@ -42,8 +42,8 @@ namespace LibrarySystem.Presentation
             this.DgvListPrestamo = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.DgvListProfesor = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.BtnBuscarProfesor = new System.Windows.Forms.Button();
+            this.TxtProfesor = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.DgvListLibro = new System.Windows.Forms.DataGridView();
@@ -56,7 +56,6 @@ namespace LibrarySystem.Presentation
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.statusStrip.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -174,8 +173,8 @@ namespace LibrarySystem.Presentation
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.DgvListProfesor);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.BtnBuscarProfesor);
+            this.groupBox2.Controls.Add(this.TxtProfesor);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(688, 24);
@@ -200,24 +199,25 @@ namespace LibrarySystem.Presentation
             this.DgvListProfesor.TabIndex = 11;
             this.DgvListProfesor.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListProfesor_CellDoubleClick);
             // 
-            // button2
+            // BtnBuscarProfesor
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(384, 59);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(101, 30);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Buscar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.BtnBuscarProfesor.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnBuscarProfesor.Location = new System.Drawing.Point(384, 59);
+            this.BtnBuscarProfesor.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnBuscarProfesor.Name = "BtnBuscarProfesor";
+            this.BtnBuscarProfesor.Size = new System.Drawing.Size(101, 30);
+            this.BtnBuscarProfesor.TabIndex = 10;
+            this.BtnBuscarProfesor.Text = "Buscar";
+            this.BtnBuscarProfesor.UseVisualStyleBackColor = true;
+            this.BtnBuscarProfesor.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox2
+            // TxtProfesor
             // 
-            this.textBox2.Location = new System.Drawing.Point(16, 66);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(301, 23);
-            this.textBox2.TabIndex = 8;
+            this.TxtProfesor.Location = new System.Drawing.Point(16, 66);
+            this.TxtProfesor.Margin = new System.Windows.Forms.Padding(2);
+            this.TxtProfesor.Name = "TxtProfesor";
+            this.TxtProfesor.Size = new System.Drawing.Size(301, 23);
+            this.TxtProfesor.TabIndex = 8;
             // 
             // label3
             // 
@@ -251,8 +251,6 @@ namespace LibrarySystem.Presentation
             // DgvListLibro
             // 
             this.DgvListLibro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvListLibro.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Seleccionar});
             this.DgvListLibro.Location = new System.Drawing.Point(16, 109);
             this.DgvListLibro.Margin = new System.Windows.Forms.Padding(2);
             this.DgvListLibro.Name = "DgvListLibro";
@@ -354,11 +352,6 @@ namespace LibrarySystem.Presentation
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // Seleccionar
-            // 
-            this.Seleccionar.HeaderText = "Seleccionar";
-            this.Seleccionar.Name = "Seleccionar";
-            // 
             // FmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -409,17 +402,16 @@ namespace LibrarySystem.Presentation
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox TxtProfesor;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button BtnBuscarProfesor;
         private System.Windows.Forms.DataGridView DgvListPrestamo;
         private System.Windows.Forms.DataGridView DgvListProfesor;
         private System.Windows.Forms.DataGridView DgvListLibro;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
     }
 }
 
