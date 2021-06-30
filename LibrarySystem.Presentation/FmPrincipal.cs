@@ -653,7 +653,7 @@ namespace LibrarySystem.Presentation
 
         private void TxtEdicion_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
         private void TxtNumeroPaginas_KeyPress(object sender, KeyPressEventArgs e)
