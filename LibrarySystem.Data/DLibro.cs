@@ -105,6 +105,82 @@ namespace LibrarySystem.Data
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
         }
+
+        public DataTable BuscarTituloActivo(string Valor)
+        {
+            SqlDataReader Outcome;
+            DataTable Tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Connection.getInstance().createConnection();
+                SqlCommand Command = new SqlCommand("libroDisponible_buscarTitulo", SqlCon);
+                Command.CommandType = CommandType.StoredProcedure;
+                Command.Parameters.Add("@valor", SqlDbType.VarChar).Value = Valor;
+                SqlCon.Open();
+                Outcome = Command.ExecuteReader();
+                Tabla.Load(Outcome);
+                return Tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
+        public DataTable BuscarIdActivo(string Valor)
+        {
+            SqlDataReader Outcome;
+            DataTable Tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Connection.getInstance().createConnection();
+                SqlCommand Command = new SqlCommand("libroDisponible_buscarId", SqlCon);
+                Command.CommandType = CommandType.StoredProcedure;
+                Command.Parameters.Add("@valor", SqlDbType.VarChar).Value = Valor;
+                SqlCon.Open();
+                Outcome = Command.ExecuteReader();
+                Tabla.Load(Outcome);
+                return Tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
+        public DataTable BuscarAutorActivo(string Valor)
+        {
+            SqlDataReader Outcome;
+            DataTable Tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Connection.getInstance().createConnection();
+                SqlCommand Command = new SqlCommand("libroDisponible_buscarAutor", SqlCon);
+                Command.CommandType = CommandType.StoredProcedure;
+                Command.Parameters.Add("@valor", SqlDbType.VarChar).Value = Valor;
+                SqlCon.Open();
+                Outcome = Command.ExecuteReader();
+                Tabla.Load(Outcome);
+                return Tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
         public string Insertar(Libro obj)
         {
             string Rpta = "";

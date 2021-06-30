@@ -31,6 +31,23 @@ namespace LibrarySystem.Business
             return Datas.BuscarAutor(Valor);
         }
 
+        public static DataTable BuscarTituloActivo(string Valor)
+        {
+            DLibro Datas = new DLibro();
+            return Datas.BuscarTituloActivo(Valor);
+        }
+
+        public static DataTable BuscarIdActivo(string Valor)
+        {
+            DLibro Datas = new DLibro();
+            return Datas.BuscarIdActivo(Valor);
+        }
+        public static DataTable BuscarAutorActivo(string Valor)
+        {
+            DLibro Datas = new DLibro();
+            return Datas.BuscarAutorActivo(Valor);
+        }
+
         public static string Insertar(string Isbn, string Titulo, string Autor, string Editorial, string Edicion, int NumeroEdicion, string Pais, string Idioma, string Materia, int NumeroPaginas, string Ubicacion, string Descripcion, bool Estado)
         {
             DLibro Datas = new DLibro();

@@ -43,9 +43,9 @@ namespace LibrarySystem.Presentation
         {
             try
             {
-                if (CmbLibro.Text == "Codigo") { DgvListLibro.DataSource = BLibro.BuscarId(identificador); this.FormatoLibrosPrestamo(); }
-                else if (CmbLibro.Text == "Titulo"){ DgvListLibro.DataSource = BLibro.BuscarTitulo(identificador); this.FormatoLibrosPrestamo(); }
-                else if (CmbLibro.Text == "Autor") { DgvListLibro.DataSource = BLibro.BuscarAutor(identificador); this.FormatoLibrosPrestamo(); }
+                if (CmbLibro.Text == "Codigo") { DgvListLibro.DataSource = BLibro.BuscarIdActivo(identificador); this.FormatoLibrosPrestamo(); }
+                else if (CmbLibro.Text == "Titulo"){ DgvListLibro.DataSource = BLibro.BuscarTituloActivo(identificador); this.FormatoLibrosPrestamo(); }
+                else if (CmbLibro.Text == "Autor") { DgvListLibro.DataSource = BLibro.BuscarAutorActivo(identificador); this.FormatoLibrosPrestamo(); }
                 
             }
             catch(Exception ex)
@@ -129,7 +129,8 @@ namespace LibrarySystem.Presentation
             DgvListLibrosConsultas.Columns[10].Width = 150;
             DgvListLibrosConsultas.Columns[11].Width = 150;
             DgvListLibrosConsultas.Columns[12].Width = 150;
-            DgvListLibrosConsultas.Columns[13].Visible = false;
+            DgvListLibrosConsultas.Columns[13].Width = 200;
+            DgvListLibrosConsultas.Columns[13].HeaderText = "Disponibilidad";
 
         }
 
