@@ -252,7 +252,7 @@ namespace LibrarySystem.Data
                 Command.Parameters.Add("@numeroPaginas", SqlDbType.Int).Value = obj.NumeroPaginas;
                 Command.Parameters.Add("@ubicacion", SqlDbType.VarChar).Value = obj.Ubicacion;
                 Command.Parameters.Add("@descripcion", SqlDbType.VarChar).Value = obj.Descripcion;
-                Command.Parameters.Add("@estado", SqlDbType.Bit).Value = obj.Descripcion;
+                Command.Parameters.Add("@estado", SqlDbType.Bit).Value = obj.Estado;
 
                 SqlCon.Open();
                 Rpta = Command.ExecuteNonQuery() == 1 ? "OK" : "No se pudo ingresar el registro";
@@ -291,7 +291,7 @@ namespace LibrarySystem.Data
                 Command.Parameters.Add("@numeroPaginas", SqlDbType.Int).Value = obj.NumeroPaginas;
                 Command.Parameters.Add("@ubicacion", SqlDbType.VarChar).Value = obj.Ubicacion;
                 Command.Parameters.Add("@descripcion", SqlDbType.VarChar).Value = obj.Descripcion;
-                Command.Parameters.Add("@estado", SqlDbType.Bit).Value = obj.Descripcion;
+                Command.Parameters.Add("@estado", SqlDbType.Bit).Value = obj.Estado;
 
                 SqlCon.Open();
                 Rpta = Command.ExecuteNonQuery() == 1 ? "OK" : "No se pudo actualizar el registro";
@@ -315,7 +315,7 @@ namespace LibrarySystem.Data
             try
             {
                 SqlCon = Connection.getInstance().createConnection();
-                SqlCommand Command = new SqlCommand("libro_elimiinar", SqlCon);
+                SqlCommand Command = new SqlCommand("libro_eliminar", SqlCon);
                 Command.CommandType = CommandType.StoredProcedure;
                 Command.Parameters.Add("@idLibro", SqlDbType.Int).Value = Id;
                 SqlCon.Open();

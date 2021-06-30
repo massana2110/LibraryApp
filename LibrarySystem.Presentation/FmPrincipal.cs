@@ -34,6 +34,23 @@ namespace LibrarySystem.Presentation
             MessageBox.Show(mensaje, "Library System", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void LimpiarMantenimiento()
+        {
+            TxtID.Text = "";
+            TxtISBN.Text = "";
+            TxtTitulo.Text = "";
+            TxtAutor.Text = "";
+            TxtEditorial.Text = "";
+            TxtEdicion.Text = "";
+            TxtNumeroEdicion.Text = "";
+            TxtPais.Text = "";
+            TxtIdioma.Text = "";
+            TxtMateria.Text = "";
+            TxtNumeroPaginas.Text = "";
+            TxtUbicacion.Text = "";
+            TxtDescripcion.Text = "";
+
+        }
         private void ListarLibrosDisponibles()
         {
             try
@@ -593,7 +610,7 @@ namespace LibrarySystem.Presentation
                 else
                 {
 
-                    this.MensajeOk("Se ingreso de forma correcta");
+                    this.MensajeOk("Se regreso el libro a disponibilidad");
                     this.DesactivarPrestamo(Convert.ToInt32(DgvPrestamosActivosDevolucion.CurrentRow.Cells["ID"].Value));
                     this.ActivarLibro(Convert.ToInt32(DgvPrestamosActivosDevolucion.CurrentRow.Cells["IdLibro"].Value));
                     this.ListarLibrosDisponibles();
@@ -608,5 +625,248 @@ namespace LibrarySystem.Presentation
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox13_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox8_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtEdicion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void TxtNumeroPaginas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void TxtNumeroEdicion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void TxtID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string Rpta = "";
+                if (
+                TxtISBN.Text == "" ||
+                TxtTitulo.Text == "" ||
+                TxtAutor.Text == "" ||
+                TxtEditorial.Text == "" ||
+                TxtEdicion.Text == "" ||
+                TxtNumeroEdicion.Text == "" ||
+                TxtPais.Text == "" ||
+                TxtIdioma.Text == "" ||
+                TxtMateria.Text == "" ||
+                TxtNumeroPaginas.Text == "" ||
+                TxtUbicacion.Text == "" ||
+                TxtDescripcion.Text == "")
+                {
+                    this.MensajeError("Falta Llenar informacion");
+
+                }
+
+                else
+                {
+
+
+                    Rpta = BLibro.Insertar
+                        (
+                    TxtISBN.Text.Trim(),
+                    TxtTitulo.Text.Trim(),
+                    TxtAutor.Text.Trim(),
+                    TxtEditorial.Text.Trim(),
+                    TxtEdicion.Text.Trim(),
+                    Convert.ToInt32(TxtNumeroEdicion.Text.Trim()),
+                    TxtPais.Text.Trim(),
+                    TxtIdioma.Text.Trim(),
+                    TxtMateria.Text.Trim(),
+                    Convert.ToInt32(TxtNumeroPaginas.Text.Trim()),
+                    TxtUbicacion.Text.Trim(),
+                    TxtDescripcion.Text.Trim(),
+                    true
+                    
+                        );
+
+                    if (Rpta.Equals("OK"))
+                    {
+                        this.MensajeOk("Se ingreso de forma correcta");
+                        this.ListarLibrosConsultasTab();
+                        this.ListarLibrosDisponibles();
+
+                       LimpiarMantenimiento();
+
+                        
+                    }
+                    else
+                    {
+                        this.MensajeError(Rpta);
+                    }
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string Rpta = "";
+                if (
+                TxtID.Text == "" ||
+                TxtISBN.Text == "" ||
+                TxtTitulo.Text == "" ||
+                TxtAutor.Text == "" ||
+                TxtEditorial.Text == "" ||
+                TxtEdicion.Text == "" ||
+                TxtNumeroEdicion.Text == "" ||
+                TxtPais.Text == "" ||
+                TxtIdioma.Text == "" ||
+                TxtMateria.Text == "" ||
+                TxtNumeroPaginas.Text == "" ||
+                TxtUbicacion.Text == "" ||
+                TxtDescripcion.Text == "")
+                {
+                    this.MensajeError("Falta Llenar informacion");
+
+                }
+
+                else
+                {
+
+
+                    Rpta = BLibro.Actualizar
+                        (
+                    Convert.ToInt32(TxtID.Text.Trim()),
+                    TxtISBN.Text.Trim(),
+                    TxtTitulo.Text.Trim(),
+                    TxtAutor.Text.Trim(),
+                    TxtEditorial.Text.Trim(),
+                    TxtEdicion.Text.Trim(),
+                    Convert.ToInt32(TxtNumeroEdicion.Text.Trim()),
+                    TxtPais.Text.Trim(),
+                    TxtIdioma.Text.Trim(),
+                    TxtMateria.Text.Trim(),
+                    Convert.ToInt32(TxtNumeroPaginas.Text.Trim()),
+                    TxtUbicacion.Text.Trim(),
+                    TxtDescripcion.Text.Trim(),
+                    true
+                        );
+
+                    if (Rpta.Equals("OK"))
+                    {
+                        this.MensajeOk("Se actualizo de forma correcta");
+                        this.ListarLibrosConsultasTab();
+                        this.ListarLibrosDisponibles();
+
+                        LimpiarMantenimiento();
+
+
+                    }
+                    else
+                    {
+                        this.MensajeError(Rpta);
+                    }
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string Rpta = "";
+                if (TxtID.Text == "" )
+                
+                {
+                    this.MensajeError("Falta Llenar informacion de ID de Libro a eliminar");
+
+                }
+
+                else
+                {
+
+
+                    Rpta = BLibro.Eliminar
+                        (
+                    Convert.ToInt32(TxtID.Text.Trim())
+                   
+                        );
+
+                    if (Rpta.Equals("OK"))
+                    {
+                        this.MensajeOk("Se elimino sastifactoriamente");
+                        this.ListarLibrosConsultasTab();
+                        this.ListarLibrosDisponibles();
+
+                        LimpiarMantenimiento();
+
+
+                    }
+                    else
+                    {
+                        this.MensajeError(Rpta);
+                    }
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+
+        }
     }
+    
 }
