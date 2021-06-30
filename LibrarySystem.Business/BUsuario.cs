@@ -13,5 +13,11 @@ namespace LibrarySystem.Business
             DUsuario Datas = new DUsuario();
             return Datas.BuscarProfesor(Valor);
         }
+
+        public static DataTable Login(string email, string contrasenia)
+        {
+            DUsuario Datos = new DUsuario();
+            return Datos.Login(email, contrasenia);
+        }
     }
 }

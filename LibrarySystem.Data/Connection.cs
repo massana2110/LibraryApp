@@ -19,7 +19,7 @@ namespace LibrarySystem.Data
         private Connection()
         {
             this.db = "biblioteca";
-            this.server = "LAPTOP-SUN"; // change this name
+            this.server = "DESKTOP-2OIUVNF"; // change this name
             this.user = "sa";
             this.password = "";
             this.security = true;

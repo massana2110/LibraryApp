@@ -14,6 +14,11 @@ namespace LibrarySystem.Presentation
     public partial class FmPrincipal : Form
     {
         private int childFormNumber = 0;
+        public int IdUsuario;
+        public int IdRol;
+        public string Nombre;
+        public string Rol;
+        public bool Estado; 
 
         public FmPrincipal()
         {
@@ -194,7 +199,14 @@ namespace LibrarySystem.Presentation
 
         private void FmPrincipal_Load(object sender, EventArgs e)
         {
-           
+            MessageBox.Show("Bienvenido: " + this.Nombre, "Sistema de Ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (this.Rol.Equals("profesor"))
+            {
+                tabControl1.TabPages.Remove(tabPage1);
+                tabControl1.SelectTab("tabPage2");
+                tabControl1.SelectedIndex = 2;
+            }
         }
 
         private void FmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
