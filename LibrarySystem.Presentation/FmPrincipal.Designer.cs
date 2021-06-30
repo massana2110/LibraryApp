@@ -65,6 +65,15 @@ namespace LibrarySystem.Presentation
             this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.TxtDevolucion = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.DgvProfesoresDevolucion = new System.Windows.Forms.DataGridView();
+            this.DgvPrestamosActivosDevolucion = new System.Windows.Forms.DataGridView();
+            this.button5 = new System.Windows.Forms.Button();
             this.statusStrip.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -74,10 +83,16 @@ namespace LibrarySystem.Presentation
             ((System.ComponentModel.ISupportInitialize)(this.DgvListProfesor)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListLibro)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListLibrosConsultas)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvProfesoresDevolucion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvPrestamosActivosDevolucion)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip
@@ -183,7 +198,7 @@ namespace LibrarySystem.Presentation
             this.DgvListPrestamo.Name = "DgvListPrestamo";
             this.DgvListPrestamo.RowHeadersWidth = 51;
             this.DgvListPrestamo.RowTemplate.Height = 24;
-            this.DgvListPrestamo.Size = new System.Drawing.Size(892, 217);
+            this.DgvListPrestamo.Size = new System.Drawing.Size(879, 217);
             this.DgvListPrestamo.TabIndex = 11;
             // 
             // groupBox2
@@ -346,6 +361,7 @@ namespace LibrarySystem.Presentation
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox5);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage3.Name = "tabPage3";
@@ -353,6 +369,7 @@ namespace LibrarySystem.Presentation
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Devolución";
             this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // toolStripLabel1
             // 
@@ -471,6 +488,107 @@ namespace LibrarySystem.Presentation
             this.label6.TabIndex = 5;
             this.label6.Text = "Criterio";
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.button5);
+            this.groupBox5.Controls.Add(this.groupBox7);
+            this.groupBox5.Controls.Add(this.groupBox6);
+            this.groupBox5.Font = new System.Drawing.Font("Minecraft", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(22, 20);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(1583, 654);
+            this.groupBox5.TabIndex = 0;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Devoluciones";
+            this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.DgvProfesoresDevolucion);
+            this.groupBox6.Controls.Add(this.button4);
+            this.groupBox6.Controls.Add(this.TxtDevolucion);
+            this.groupBox6.Controls.Add(this.label7);
+            this.groupBox6.Font = new System.Drawing.Font("Minecraft", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox6.Location = new System.Drawing.Point(47, 60);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(724, 480);
+            this.groupBox6.TabIndex = 0;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Profesores";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.DgvPrestamosActivosDevolucion);
+            this.groupBox7.Font = new System.Drawing.Font("Minecraft", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.Location = new System.Drawing.Point(829, 117);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(735, 423);
+            this.groupBox7.TabIndex = 1;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Prestamos Activos";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Minecraft", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(33, 56);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(222, 16);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Buscar por nombre o apellido";
+            // 
+            // TxtDevolucion
+            // 
+            this.TxtDevolucion.Font = new System.Drawing.Font("Minecraft", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtDevolucion.Location = new System.Drawing.Point(36, 85);
+            this.TxtDevolucion.Name = "TxtDevolucion";
+            this.TxtDevolucion.Size = new System.Drawing.Size(453, 27);
+            this.TxtDevolucion.TabIndex = 1;
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Minecraft", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(539, 81);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(151, 36);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "Buscar";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // DgvProfesoresDevolucion
+            // 
+            this.DgvProfesoresDevolucion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvProfesoresDevolucion.Location = new System.Drawing.Point(36, 138);
+            this.DgvProfesoresDevolucion.Name = "DgvProfesoresDevolucion";
+            this.DgvProfesoresDevolucion.RowTemplate.Height = 24;
+            this.DgvProfesoresDevolucion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvProfesoresDevolucion.Size = new System.Drawing.Size(670, 324);
+            this.DgvProfesoresDevolucion.TabIndex = 3;
+            this.DgvProfesoresDevolucion.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvProfesoresDevolucion_CellContentDoubleClick);
+            this.DgvProfesoresDevolucion.DoubleClick += new System.EventHandler(this.DgvProfesoresDevolucion_DoubleClick);
+            // 
+            // DgvPrestamosActivosDevolucion
+            // 
+            this.DgvPrestamosActivosDevolucion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvPrestamosActivosDevolucion.Location = new System.Drawing.Point(33, 81);
+            this.DgvPrestamosActivosDevolucion.Name = "DgvPrestamosActivosDevolucion";
+            this.DgvPrestamosActivosDevolucion.RowTemplate.Height = 24;
+            this.DgvPrestamosActivosDevolucion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvPrestamosActivosDevolucion.Size = new System.Drawing.Size(670, 296);
+            this.DgvPrestamosActivosDevolucion.TabIndex = 4;
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Minecraft", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(1239, 589);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(281, 40);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "Devolver";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // FmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -499,12 +617,19 @@ namespace LibrarySystem.Presentation
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListLibro)).EndInit();
+            this.tabPage3.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListLibrosConsultas)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DgvProfesoresDevolucion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvPrestamosActivosDevolucion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -545,6 +670,15 @@ namespace LibrarySystem.Presentation
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox TxtConsulta;
         private System.Windows.Forms.ComboBox CmbConsulta;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.DataGridView DgvPrestamosActivosDevolucion;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.DataGridView DgvProfesoresDevolucion;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox TxtDevolucion;
+        private System.Windows.Forms.Label label7;
     }
 }
 

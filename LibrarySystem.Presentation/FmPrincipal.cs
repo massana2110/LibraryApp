@@ -52,7 +52,19 @@ namespace LibrarySystem.Presentation
         {
             try
             {
-                DgvListPrestamo.DataSource = BLibro.DesactivarEstado(id);
+                BLibro.DesactivarEstado(id);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+        private void DesactivarPrestamo(int id)
+        {
+            try
+            {
+                 BPrestamo.ActualizarDevolucion(id);
 
             }
             catch (Exception ex)
@@ -61,11 +73,11 @@ namespace LibrarySystem.Presentation
             }
         }
 
-            private void ActivarLibro(int id)
+        private void ActivarLibro(int id)
             {
                 try
                 {
-                    DgvListPrestamo.DataSource = BLibro.ActivarEstado(id);
+                   BLibro.ActivarEstado(id);
 
                 }
                 catch (Exception ex)
@@ -79,6 +91,19 @@ namespace LibrarySystem.Presentation
             {
                 DgvListProfesor.DataSource = BUsuario.ListarProfesores();
                 this.FormatoProfesores();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+        private void ListarProfesoresDevolucion()
+        {
+            try
+            {
+                DgvProfesoresDevolucion.DataSource = BUsuario.ListarProfesores();
+                this.FormatoProfesoresDevolucion();
 
             }
             catch (Exception ex)
@@ -133,14 +158,25 @@ namespace LibrarySystem.Presentation
             try
             {
                 DgvListPrestamo.DataSource = BPrestamo.Buscar(Id);
-                this.FormatoProfesores();
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
-       
+        private void BuscarPrestamosDevolucion(string Id)
+        {
+            try
+            {
+                DgvPrestamosActivosDevolucion.DataSource = BPrestamo.Buscar(Id);
+                this.FormatoDgvPrestamoDevolucion();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
 
         private void BuscarProfesor(string identificador)
         {
@@ -148,6 +184,18 @@ namespace LibrarySystem.Presentation
             {
                 DgvListProfesor.DataSource = BUsuario.BuscarProfesor(identificador);
                 this.FormatoProfesores();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+        private void BuscarProfesorDevolucion(string identificador)
+        {
+            try
+            {
+                DgvProfesoresDevolucion.DataSource = BUsuario.BuscarProfesor(identificador);
+                this.FormatoProfesoresDevolucion();
             }
             catch (Exception ex)
             {
@@ -203,15 +251,23 @@ namespace LibrarySystem.Presentation
             DgvListProfesor.Columns[4].Visible = false;
             DgvListProfesor.Columns[5].Visible = false;
         }
-
-        private void FormatoDgvPrestamo()
+        private void FormatoProfesoresDevolucion()
         {
-            DgvListPrestamo.Columns[0].Width = 50;
-            DgvListPrestamo.Columns[1].Width = 500;
-            DgvListPrestamo.Columns[2].Width = 500;
-            DgvListPrestamo.Columns[3].Width = 500;
-            DgvListPrestamo.Columns[4].Width = 500;
-            DgvListPrestamo.Columns[5].Width = 400;
+            DgvProfesoresDevolucion.Columns[0].Width = 50;
+            DgvProfesoresDevolucion.Columns[1].Width = 100;
+            DgvProfesoresDevolucion.Columns[2].Width = 100;
+            DgvProfesoresDevolucion.Columns[3].Width = 200;
+            DgvProfesoresDevolucion.Columns[4].Visible = false;
+            DgvProfesoresDevolucion.Columns[5].Visible = false;
+        }
+        private void FormatoDgvPrestamoDevolucion()
+        {
+            DgvPrestamosActivosDevolucion.Columns[0].Width = 50;
+            DgvPrestamosActivosDevolucion.Columns[1].Width = 100;
+            DgvPrestamosActivosDevolucion.Columns[2].Width = 100;
+            DgvPrestamosActivosDevolucion.Columns[3].Width = 100;
+            DgvPrestamosActivosDevolucion.Columns[4].Width = 100;
+            DgvPrestamosActivosDevolucion.Columns[5].Width = 100;
         }
 
 
@@ -332,13 +388,19 @@ namespace LibrarySystem.Presentation
             this.ListarLibrosConsultasTab();
             this.ListarLibrosDisponibles();
             this.ListarProfesores();
+            this.ListarProfesoresDevolucion();
             this.DgvListLibro.AllowUserToAddRows = false;
             this.DgvListLibrosConsultas.AllowUserToAddRows = false;
             this.DgvListProfesor.AllowUserToAddRows = false;
             this.DgvListPrestamo.AllowUserToAddRows = false;
+            this.DgvProfesoresDevolucion.AllowUserToAddRows = false;
+            this.DgvPrestamosActivosDevolucion.AllowUserToAddRows = false;
+            DgvProfesoresDevolucion.CurrentCell = null;
+            DgvPrestamosActivosDevolucion.CurrentCell = null;    
             DgvListLibro.CurrentCell = null;
             DgvListProfesor.CurrentCell = null;
             
+
 
         }
 
@@ -473,6 +535,78 @@ namespace LibrarySystem.Presentation
             DgvListLibro.CurrentCell = null;
             DgvListProfesor.CurrentCell = null;
             DgvListPrestamo.CurrentCell = null;
+        }
+
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DgvProfesoresDevolucion_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DgvProfesoresDevolucion_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                //recupero valor string de la celda "id"
+
+                this.BuscarPrestamosDevolucion(Convert.ToString(DgvProfesoresDevolucion.CurrentRow.Cells["ID"].Value));
+
+
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Seleccione celda");
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.BuscarProfesorDevolucion(TxtDevolucion.Text);
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+            DgvPrestamosActivosDevolucion.CurrentCell = null;
+            DgvProfesoresDevolucion.CurrentCell = null;
+           
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+
+
+            try
+            {
+                
+                if (DgvPrestamosActivosDevolucion.CurrentCell == null)
+                {
+                    this.MensajeError("Falta Seleccionar Registro de prestamo");
+
+                }
+   
+                else
+                {
+
+                    this.MensajeOk("Se ingreso de forma correcta");
+                    this.DesactivarPrestamo(Convert.ToInt32(DgvPrestamosActivosDevolucion.CurrentRow.Cells["ID"].Value));
+                    this.ActivarLibro(Convert.ToInt32(DgvPrestamosActivosDevolucion.CurrentRow.Cells["IdLibro"].Value));
+                    this.ListarLibrosDisponibles();
+                    this.BuscarPrestamosDevolucion(Convert.ToString(DgvProfesoresDevolucion.CurrentRow.Cells["ID"].Value));
+                    TxtDevolucion.Text = "";
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
         }
     }
 }

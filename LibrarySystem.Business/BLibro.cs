@@ -19,6 +19,12 @@ namespace LibrarySystem.Business
             return Datas.ListarDisponibles();
 
         }
+        public static DataTable ListarNoDisponibles()
+        {
+            DLibro Datas = new DLibro();
+            return Datas.ListarNoDisponibles();
+
+        }
         public static DataTable BuscarTitulo(string Valor)
         {
             DLibro Datas = new DLibro();
