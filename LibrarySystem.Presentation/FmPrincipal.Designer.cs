@@ -128,6 +128,7 @@ namespace LibrarySystem.Presentation
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Préstamo";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // button3
             // 
@@ -177,12 +178,12 @@ namespace LibrarySystem.Presentation
             // DgvListPrestamo
             // 
             this.DgvListPrestamo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvListPrestamo.Location = new System.Drawing.Point(21, 50);
+            this.DgvListPrestamo.Location = new System.Drawing.Point(92, 39);
             this.DgvListPrestamo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DgvListPrestamo.Name = "DgvListPrestamo";
             this.DgvListPrestamo.RowHeadersWidth = 51;
             this.DgvListPrestamo.RowTemplate.Height = 24;
-            this.DgvListPrestamo.Size = new System.Drawing.Size(1145, 217);
+            this.DgvListPrestamo.Size = new System.Drawing.Size(892, 217);
             this.DgvListPrestamo.TabIndex = 11;
             // 
             // groupBox2

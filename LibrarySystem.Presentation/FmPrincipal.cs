@@ -47,6 +47,32 @@ namespace LibrarySystem.Presentation
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
+
+        private void DesactivarLibro(int id)
+        {
+            try
+            {
+                DgvListPrestamo.DataSource = BLibro.DesactivarEstado(id);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+            private void ActivarLibro(int id)
+            {
+                try
+                {
+                    DgvListPrestamo.DataSource = BLibro.ActivarEstado(id);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message + ex.StackTrace);
+                }
+            }
         private void ListarProfesores()
         {
             try
@@ -107,7 +133,7 @@ namespace LibrarySystem.Presentation
             try
             {
                 DgvListPrestamo.DataSource = BPrestamo.Buscar(Id);
-                
+                this.FormatoProfesores();
             }
             catch (Exception ex)
             {
@@ -177,6 +203,17 @@ namespace LibrarySystem.Presentation
             DgvListProfesor.Columns[4].Visible = false;
             DgvListProfesor.Columns[5].Visible = false;
         }
+
+        private void FormatoDgvPrestamo()
+        {
+            DgvListPrestamo.Columns[0].Width = 50;
+            DgvListPrestamo.Columns[1].Width = 500;
+            DgvListPrestamo.Columns[2].Width = 500;
+            DgvListPrestamo.Columns[3].Width = 500;
+            DgvListPrestamo.Columns[4].Width = 500;
+            DgvListPrestamo.Columns[5].Width = 400;
+        }
+
 
 
 
@@ -295,6 +332,14 @@ namespace LibrarySystem.Presentation
             this.ListarLibrosConsultasTab();
             this.ListarLibrosDisponibles();
             this.ListarProfesores();
+            this.DgvListLibro.AllowUserToAddRows = false;
+            this.DgvListLibrosConsultas.AllowUserToAddRows = false;
+            this.DgvListProfesor.AllowUserToAddRows = false;
+            this.DgvListPrestamo.AllowUserToAddRows = false;
+            DgvListLibro.CurrentCell = null;
+            DgvListProfesor.CurrentCell = null;
+            
+
         }
 
         private void FmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -315,9 +360,9 @@ namespace LibrarySystem.Presentation
             try
             {
                 //recupero valor string de la celda "id"
-                String id = Convert.ToString(DgvListProfesor.CurrentRow.Cells["ID"].Value);
-                this.BuscarPrestamos(id);
-
+                
+                this.BuscarPrestamos(Convert.ToString(DgvListProfesor.CurrentRow.Cells["ID"].Value));
+               
 
 
             }
@@ -348,12 +393,12 @@ namespace LibrarySystem.Presentation
             try
             {
                 string Rpta = "";
-                if(DgvListLibro.Rows[0].Cells[0].Selected == false)
+                if(DgvListLibro.CurrentCell==null)
                 {
                     this.MensajeError("Falta Seleccionar Libro");
 
                 }
-                else if (DgvListProfesor.Rows[0].Cells[0].Selected == false)
+                else if (DgvListProfesor.CurrentCell == null)
                 {
                     this.MensajeError("Falta Seleccionar Profesor");
                 }
@@ -364,10 +409,34 @@ namespace LibrarySystem.Presentation
                 }
                 else
                 {
-                    DgvListLibro.DataSource = "";
-                    DgvListProfesor.DataSource = "";
-                    TxtLibro.Text = "";
-                    TxtProfesor.Text = "";
+
+
+                    Rpta = BPrestamo.Insertar
+                        (
+                        Convert.ToInt32(DgvListProfesor.CurrentRow.Cells["ID"].Value),
+                        Convert.ToInt32(DgvListLibro.CurrentRow.Cells["ID"].Value),
+                        DateTime.Now,
+                        DatePickerDevolucion.Value,
+                        true
+                        );
+
+                    if (Rpta.Equals("OK"))
+                    {
+                        this.MensajeOk("Se ingreso de forma correcta");
+                        this.DesactivarLibro(Convert.ToInt32(DgvListLibro.CurrentRow.Cells["ID"].Value));
+                        this.ListarLibrosDisponibles();
+                        this.BuscarPrestamos(Convert.ToString(DgvListProfesor.CurrentRow.Cells["ID"].Value));
+
+
+                        TxtLibro.Text = "";
+                        TxtProfesor.Text = "";
+                    }
+                    else
+                    {
+                        this.MensajeError(Rpta);
+                    }
+
+                    
                 }
                
             }
@@ -397,6 +466,13 @@ namespace LibrarySystem.Presentation
         private void DgvListProfesor_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+            DgvListLibro.CurrentCell = null;
+            DgvListProfesor.CurrentCell = null;
+            DgvListPrestamo.CurrentCell = null;
         }
     }
 }
