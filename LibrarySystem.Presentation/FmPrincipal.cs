@@ -615,6 +615,7 @@ namespace LibrarySystem.Presentation
                     this.ActivarLibro(Convert.ToInt32(DgvPrestamosActivosDevolucion.CurrentRow.Cells["IdLibro"].Value));
                     this.ListarLibrosDisponibles();
                     this.BuscarPrestamosDevolucion(Convert.ToString(DgvProfesoresDevolucion.CurrentRow.Cells["ID"].Value));
+                    this.BuscarPrestamos(Convert.ToString(DgvListProfesor.CurrentRow.Cells["ID"].Value));
                     TxtDevolucion.Text = "";
 
                 }
