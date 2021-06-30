@@ -31,5 +31,34 @@ namespace LibrarySystem.Data
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
         }
+
+        public DataTable Login(string email, string contrasenia)
+        {
+            SqlDataReader Resultado;
+            DataTable Tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon = Connection.getInstance().createConnection();
+                SqlCommand comando = new SqlCommand("usuario_login", SqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
+                comando.Parameters.Add("@contrasenia", SqlDbType.VarChar).Value = contrasenia;
+                SqlCon.Open();
+                Resultado = comando.ExecuteReader();
+                Tabla.Load(Resultado);
+                return Tabla;
+            }
+            catch (Exception ex)
+            {
+                return null;
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
     }
 }

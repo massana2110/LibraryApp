@@ -34,7 +34,7 @@ namespace LibrarySystem.Presentation
             this.LblEmail = new System.Windows.Forms.Label();
             this.TxtEmail = new System.Windows.Forms.TextBox();
             this.LblPassword = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtContrasenia = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // BtnLogin
@@ -82,13 +82,14 @@ namespace LibrarySystem.Presentation
             this.LblPassword.TabIndex = 3;
             this.LblPassword.Text = "Contraseña";
             // 
-            // textBox1
+            // txtContrasenia
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox1.Location = new System.Drawing.Point(471, 258);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(227, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtContrasenia.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.txtContrasenia.Location = new System.Drawing.Point(471, 258);
+            this.txtContrasenia.Name = "txtContrasenia";
+            this.txtContrasenia.PasswordChar = '*';
+            this.txtContrasenia.Size = new System.Drawing.Size(227, 20);
+            this.txtContrasenia.TabIndex = 4;
             // 
             // LoginForm
             // 
@@ -97,13 +98,14 @@ namespace LibrarySystem.Presentation
             this.BackColor = System.Drawing.Color.Silver;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtContrasenia);
             this.Controls.Add(this.LblPassword);
             this.Controls.Add(this.TxtEmail);
             this.Controls.Add(this.LblEmail);
             this.Controls.Add(this.BtnLogin);
             this.Name = "LoginForm";
             this.Text = "Login";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -115,6 +117,6 @@ namespace LibrarySystem.Presentation
         private System.Windows.Forms.Label LblEmail;
         private System.Windows.Forms.TextBox TxtEmail;
         private System.Windows.Forms.Label LblPassword;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtContrasenia;
     }
 }
