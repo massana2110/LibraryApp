@@ -70,7 +70,7 @@ namespace LibrarySystem.Data
                 Command.Parameters.Add("@idLibro", SqlDbType.Int).Value = obj.IdLibro;
                 Command.Parameters.Add("@fechaPrestamo", SqlDbType.Date).Value = obj.FechaPrestamo;
                 Command.Parameters.Add("@fechaDevolucion", SqlDbType.Date).Value = obj.FechaDevolucion;
-                Command.Parameters.Add("1", SqlDbType.Bit).Value = obj.Estado;
+                Command.Parameters.Add("@estado", SqlDbType.Bit).Value = obj.Estado;
                 SqlCon.Open();
                 Rpta = Command.ExecuteNonQuery() == 1 ? "OK" : "No se pudo ingresar el registro";
             }

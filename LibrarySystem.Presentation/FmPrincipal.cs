@@ -26,17 +26,43 @@ namespace LibrarySystem.Presentation
         }
 
 
-        
-        private void BuscarLibros(string identificador)
+        private void ListarLibrosConsultasTab()
         {
             try
             {
-                if (CmbLibro.Text == "Codigo") { DgvListLibro.DataSource = BLibro.BuscarId(identificador); }
-                else if (CmbLibro.Text == "Titulo"){ DgvListLibro.DataSource = BLibro.BuscarTitulo(identificador); }
-                else if (CmbLibro.Text == "Autor") { DgvListLibro.DataSource = BLibro.BuscarAutor(identificador); }
-                this.FormatoLibros();
+                DgvListLibrosConsultas.DataSource = BLibro.Listar();
+                this.FormatoLibrosConsulta();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+        private void BuscarLibrosPrestamosTab(string identificador)
+        {
+            try
+            {
+                if (CmbLibro.Text == "Codigo") { DgvListLibro.DataSource = BLibro.BuscarId(identificador); this.FormatoLibrosPrestamo(); }
+                else if (CmbLibro.Text == "Titulo"){ DgvListLibro.DataSource = BLibro.BuscarTitulo(identificador); this.FormatoLibrosPrestamo(); }
+                else if (CmbLibro.Text == "Autor") { DgvListLibro.DataSource = BLibro.BuscarAutor(identificador); this.FormatoLibrosPrestamo(); }
+                
             }
             catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+        private void BuscarLibrosConsultasTab(string identificador)
+        {
+            try
+            {
+                if (CmbConsulta.Text == "Codigo") { DgvListLibrosConsultas.DataSource = BLibro.BuscarId(identificador); this.FormatoLibrosConsulta(); }
+                else if (CmbConsulta.Text == "Titulo") { DgvListLibrosConsultas.DataSource = BLibro.BuscarTitulo(identificador); this.FormatoLibrosConsulta(); }
+                else if (CmbConsulta.Text == "Autor") { DgvListLibrosConsultas.DataSource = BLibro.BuscarAutor(identificador); this.FormatoLibrosConsulta(); }
+               
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
@@ -54,6 +80,7 @@ namespace LibrarySystem.Presentation
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
+       
 
         private void BuscarProfesor(string identificador)
         {
@@ -68,7 +95,7 @@ namespace LibrarySystem.Presentation
             }
         }
 
-        private void FormatoLibros()
+        private void FormatoLibrosPrestamo()
         {
             DgvListLibro.Columns[0].Width = 50;
             DgvListLibro.Columns[1].Visible = false;
@@ -83,6 +110,26 @@ namespace LibrarySystem.Presentation
             DgvListLibro.Columns[10].Visible = false;
             DgvListLibro.Columns[11].Visible = false;
             DgvListLibro.Columns[12].Width = 150;
+            DgvListLibro.Columns[13].Visible = false;
+
+
+        }
+        private void FormatoLibrosConsulta()
+        {
+            DgvListLibrosConsultas.Columns[0].Width = 50;
+            DgvListLibrosConsultas.Columns[1].Width = 150;
+            DgvListLibrosConsultas.Columns[2].Width = 150;
+            DgvListLibrosConsultas.Columns[3].Width = 150;
+            DgvListLibrosConsultas.Columns[4].Width = 150;
+            DgvListLibrosConsultas.Columns[5].Width = 150;
+            DgvListLibrosConsultas.Columns[6].Width = 150;
+            DgvListLibrosConsultas.Columns[7].Width = 150;
+            DgvListLibrosConsultas.Columns[8].Width = 150;
+            DgvListLibrosConsultas.Columns[9].Width = 150;
+            DgvListLibrosConsultas.Columns[10].Width = 150;
+            DgvListLibrosConsultas.Columns[11].Width = 150;
+            DgvListLibrosConsultas.Columns[12].Width = 150;
+            DgvListLibrosConsultas.Columns[13].Visible = false;
 
         }
 
@@ -193,7 +240,7 @@ namespace LibrarySystem.Presentation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.BuscarLibros(TxtLibro.Text);
+            this.BuscarLibrosPrestamosTab(TxtLibro.Text);
 
         }
 
@@ -201,12 +248,16 @@ namespace LibrarySystem.Presentation
         {
             MessageBox.Show("Bienvenido: " + this.Nombre, "Sistema de Ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            
+
             if (this.Rol.Equals("profesor"))
             {
                 tabControl1.TabPages.Remove(tabPage1);
                 tabControl1.SelectTab("tabPage2");
                 tabControl1.SelectedIndex = 2;
             }
+
+            this.ListarLibrosConsultasTab();
         }
 
         private void FmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -259,6 +310,21 @@ namespace LibrarySystem.Presentation
         {
 
            
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            this.BuscarLibrosConsultasTab(TxtConsulta.Text);
         }
     }
 }

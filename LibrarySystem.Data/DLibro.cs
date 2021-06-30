@@ -127,6 +127,7 @@ namespace LibrarySystem.Data
                 Command.Parameters.Add("@numeroPaginas", SqlDbType.Int).Value = obj.NumeroPaginas;
                 Command.Parameters.Add("@ubicacion", SqlDbType.VarChar).Value = obj.Ubicacion;
                 Command.Parameters.Add("@descripcion", SqlDbType.VarChar).Value = obj.Descripcion;
+                Command.Parameters.Add("@estado", SqlDbType.Bit).Value = obj.Descripcion;
 
                 SqlCon.Open();
                 Rpta = Command.ExecuteNonQuery() == 1 ? "OK" : "No se pudo ingresar el registro";
@@ -165,6 +166,7 @@ namespace LibrarySystem.Data
                 Command.Parameters.Add("@numeroPaginas", SqlDbType.Int).Value = obj.NumeroPaginas;
                 Command.Parameters.Add("@ubicacion", SqlDbType.VarChar).Value = obj.Ubicacion;
                 Command.Parameters.Add("@descripcion", SqlDbType.VarChar).Value = obj.Descripcion;
+                Command.Parameters.Add("@estado", SqlDbType.Bit).Value = obj.Descripcion;
 
                 SqlCon.Open();
                 Rpta = Command.ExecuteNonQuery() == 1 ? "OK" : "No se pudo actualizar el registro";
@@ -193,6 +195,58 @@ namespace LibrarySystem.Data
                 Command.Parameters.Add("@idLibro", SqlDbType.Int).Value = Id;
                 SqlCon.Open();
                 Rpta = Command.ExecuteNonQuery() == 1 ? "OK" : "No se pudo eliminar el registro";
+            }
+            catch (Exception ex)
+            {
+                Rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
+
+        }
+
+        public string ActivarEstado(int Id)
+        {
+            string Rpta = "";
+
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Connection.getInstance().createConnection();
+                SqlCommand Command = new SqlCommand("libro_activar", SqlCon);
+                Command.CommandType = CommandType.StoredProcedure;
+                Command.Parameters.Add("@idLibro", SqlDbType.Int).Value = Id;
+                SqlCon.Open();
+                Rpta = Command.ExecuteNonQuery() == 1 ? "OK" : "No se pudo desactivar el registro";
+            }
+            catch (Exception ex)
+            {
+                Rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
+
+        }
+
+        public string DesactivarEstado(int Id)
+        {
+            string Rpta = "";
+
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Connection.getInstance().createConnection();
+                SqlCommand Command = new SqlCommand("libro_desactivar", SqlCon);
+                Command.CommandType = CommandType.StoredProcedure;
+                Command.Parameters.Add("@idLibro", SqlDbType.Int).Value = Id;
+                SqlCon.Open();
+                Rpta = Command.ExecuteNonQuery() == 1 ? "OK" : "No se pudo desactivar el registro";
             }
             catch (Exception ex)
             {

@@ -31,7 +31,7 @@ namespace LibrarySystem.Business
             return Datas.BuscarAutor(Valor);
         }
 
-        public static string Insertar(string Isbn, string Titulo, string Autor, string Editorial, string Edicion, int NumeroEdicion, string Pais, string Idioma, string Materia, int NumeroPaginas, string Ubicacion, string Descripcion)
+        public static string Insertar(string Isbn, string Titulo, string Autor, string Editorial, string Edicion, int NumeroEdicion, string Pais, string Idioma, string Materia, int NumeroPaginas, string Ubicacion, string Descripcion, bool Estado)
         {
             DLibro Datas = new DLibro();
             Libro Obj = new Libro();
@@ -48,13 +48,14 @@ namespace LibrarySystem.Business
             Obj.NumeroPaginas = NumeroPaginas;
             Obj.Ubicacion = Ubicacion;
             Obj.Descripcion = Descripcion;
-            
+            Obj.Estado = Estado;
+
 
             return Datas.Insertar(Obj);
 
         }
 
-        public static string ActualizarDevolucion(int Id, string Isbn, string Titulo, string Autor, string Editorial, string Edicion, int NumeroEdicion, string Pais, string Idioma, string Materia, int NumeroPaginas, string Ubicacion, string Descripcion)
+        public static string Actualizar(int Id, string Isbn, string Titulo, string Autor, string Editorial, string Edicion, int NumeroEdicion, string Pais, string Idioma, string Materia, int NumeroPaginas, string Ubicacion, string Descripcion, bool Estado)
         {
             DLibro Datas = new DLibro();
             Libro Obj = new Libro();
@@ -71,6 +72,7 @@ namespace LibrarySystem.Business
             Obj.NumeroPaginas = NumeroPaginas;
             Obj.Ubicacion = Ubicacion;
             Obj.Descripcion = Descripcion;
+            Obj.Estado = Estado;
 
 
             return Datas.Actualizar(Obj);
@@ -81,6 +83,19 @@ namespace LibrarySystem.Business
             DLibro Datas = new DLibro();
             return Datas.Eliminar(Valor);
         }
+
+        public static string ActivarEstado(int Id)
+        {
+            DLibro Datas = new DLibro();
+            return Datas.ActivarEstado(Id);
+        }
+
+        public static string DesactivarEstado(int Id)
+        {
+            DLibro Datas = new DLibro();
+            return Datas.DesactivarEstado(Id);
+        }
+
 
     }
 }
