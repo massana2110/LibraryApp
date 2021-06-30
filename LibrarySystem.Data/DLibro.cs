@@ -30,6 +30,30 @@ namespace LibrarySystem.Data
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
         }
+        public DataTable ListarDisponibles()
+        {
+            SqlDataReader Outcome;
+            DataTable Tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Connection.getInstance().createConnection();
+                SqlCommand Command = new SqlCommand("librosDisponibles_listar", SqlCon);
+                Command.CommandType = CommandType.StoredProcedure;
+                SqlCon.Open();
+                Outcome = Command.ExecuteReader();
+                Tabla.Load(Outcome);
+                return Tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
         public DataTable BuscarTitulo(string Valor)
         {
             SqlDataReader Outcome;

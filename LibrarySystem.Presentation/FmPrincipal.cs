@@ -25,7 +25,41 @@ namespace LibrarySystem.Presentation
             InitializeComponent();
         }
 
+        private void MensajeError(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Library System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        private void MensajeOk(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Library System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
+        private void ListarLibrosDisponibles()
+        {
+            try
+            {
+                DgvListLibro.DataSource = BLibro.ListarDisponibles();
+                this.FormatoLibrosPrestamo();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+        private void ListarProfesores()
+        {
+            try
+            {
+                DgvListProfesor.DataSource = BUsuario.ListarProfesores();
+                this.FormatoProfesores();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
         private void ListarLibrosConsultasTab()
         {
             try
@@ -259,6 +293,8 @@ namespace LibrarySystem.Presentation
             }
 
             this.ListarLibrosConsultasTab();
+            this.ListarLibrosDisponibles();
+            this.ListarProfesores();
         }
 
         private void FmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -309,7 +345,37 @@ namespace LibrarySystem.Presentation
 
         private void button3_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string Rpta = "";
+                if(DgvListLibro.Rows[0].Cells[0].Selected == false)
+                {
+                    this.MensajeError("Falta Seleccionar Libro");
 
+                }
+                else if (DgvListProfesor.Rows[0].Cells[0].Selected == false)
+                {
+                    this.MensajeError("Falta Seleccionar Profesor");
+                }
+                else if(DatePickerDevolucion.Value==null)
+                {
+                    this.MensajeError("Falta Seleccionar Fecha de devolucion");
+                    
+                }
+                else
+                {
+                    DgvListLibro.DataSource = "";
+                    DgvListProfesor.DataSource = "";
+                    TxtLibro.Text = "";
+                    TxtProfesor.Text = "";
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+           
            
         }
 
@@ -326,6 +392,11 @@ namespace LibrarySystem.Presentation
         private void button2_Click_1(object sender, EventArgs e)
         {
             this.BuscarLibrosConsultasTab(TxtConsulta.Text);
+        }
+
+        private void DgvListProfesor_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

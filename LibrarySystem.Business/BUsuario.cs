@@ -8,6 +8,12 @@ namespace LibrarySystem.Business
 {
     public class BUsuario
     {
+        public static DataTable ListarProfesores()
+        {
+            DUsuario Datas = new DUsuario();
+            return Datas.Listar();
+
+        }
         public static DataTable BuscarProfesor(string Valor)
         {
             DUsuario Datas = new DUsuario();

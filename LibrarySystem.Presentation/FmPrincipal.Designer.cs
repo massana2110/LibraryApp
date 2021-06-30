@@ -37,7 +37,7 @@ namespace LibrarySystem.Presentation
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.DatePickerDevolucion = new System.Windows.Forms.DateTimePicker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.DgvListPrestamo = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -116,7 +116,7 @@ namespace LibrarySystem.Presentation
             // 
             this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.dateTimePicker1);
+            this.tabPage1.Controls.Add(this.DatePickerDevolucion);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
@@ -151,14 +151,14 @@ namespace LibrarySystem.Presentation
             this.label1.TabIndex = 4;
             this.label1.Text = "Fecha limite de devolucion";
             // 
-            // dateTimePicker1
+            // DatePickerDevolucion
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(1224, 430);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(385, 22);
-            this.dateTimePicker1.TabIndex = 3;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.DatePickerDevolucion.Location = new System.Drawing.Point(1224, 430);
+            this.DatePickerDevolucion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DatePickerDevolucion.Name = "DatePickerDevolucion";
+            this.DatePickerDevolucion.Size = new System.Drawing.Size(385, 22);
+            this.DatePickerDevolucion.TabIndex = 3;
+            this.DatePickerDevolucion.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // groupBox3
             // 
@@ -214,6 +214,7 @@ namespace LibrarySystem.Presentation
             this.DgvListProfesor.TabIndex = 11;
             this.DgvListProfesor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListProfesor_CellContentClick);
             this.DgvListProfesor.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListProfesor_CellDoubleClick);
+            this.DgvListProfesor.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DgvListProfesor_MouseDoubleClick);
             // 
             // BtnBuscarProfesor
             // 
@@ -519,7 +520,7 @@ namespace LibrarySystem.Presentation
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker DatePickerDevolucion;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox TxtLibro;
