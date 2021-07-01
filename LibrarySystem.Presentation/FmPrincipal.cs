@@ -141,6 +141,20 @@ namespace LibrarySystem.Presentation
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
+
+        private void ListarLibrosReportesTab()
+        {
+            try
+            {
+                DgvReportes.DataSource = BLibro.Listar();
+                this.FormatoLibrosConsulta();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
         private void BuscarLibrosPrestamosTab(string identificador)
         {
             try
@@ -187,6 +201,19 @@ namespace LibrarySystem.Presentation
             try
             {
                 DgvPrestamosActivosDevolucion.DataSource = BPrestamo.Buscar(Id);
+                this.FormatoDgvPrestamoDevolucion();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void ListarPrestamosReporte(string Id)
+        {
+            try
+            {
+                DgvReportes.DataSource = BPrestamo.Listar();
                 this.FormatoDgvPrestamoDevolucion();
             }
             catch (Exception ex)
@@ -286,6 +313,37 @@ namespace LibrarySystem.Presentation
             DgvPrestamosActivosDevolucion.Columns[4].Width = 100;
             DgvPrestamosActivosDevolucion.Columns[5].Width = 100;
         }
+
+        private void FormatoDgvPrestamoReporte()
+        {
+            DgvReportes.Columns[0].Width = 50;
+            DgvReportes.Columns[1].Width = 300;
+            DgvReportes.Columns[2].Width = 300;
+            DgvReportes.Columns[3].Width = 300;
+            DgvReportes.Columns[4].Width = 300;
+            DgvReportes.Columns[5].Width = 300;
+        }
+        private void FormatoLibroActivosReporte()
+        {
+            DgvReportes.Columns[0].Width = 50;
+            DgvReportes.Columns[1].Width = 150;
+            DgvReportes.Columns[2].Width = 150;
+            DgvReportes.Columns[3].Width = 150;
+            DgvReportes.Columns[4].Width = 150;
+            DgvReportes.Columns[5].Width = 150;
+            DgvReportes.Columns[6].Width = 150;
+            DgvReportes.Columns[7].Width = 150;
+            DgvReportes.Columns[8].Width = 150;
+            DgvReportes.Columns[9].Width = 150;
+            DgvReportes.Columns[10].Width = 150;
+            DgvReportes.Columns[11].Width = 150;
+            DgvReportes.Columns[12].Width = 150;
+            DgvReportes.Columns[13].Width = 200;
+            DgvReportes.Columns[13].HeaderText = "Disponibilidad";
+        }
+
+
+
 
 
 
@@ -416,7 +474,9 @@ namespace LibrarySystem.Presentation
             DgvPrestamosActivosDevolucion.CurrentCell = null;    
             DgvListLibro.CurrentCell = null;
             DgvListProfesor.CurrentCell = null;
-            
+            this.DgvReportes.AllowUserToAddRows = false;
+            DgvReportes.CurrentCell = null;
+
 
 
         }
@@ -867,6 +927,21 @@ namespace LibrarySystem.Presentation
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
 
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CmbReporte.Text == "Libros Registrados") { DgvReportes.DataSource = BLibro.Listar(); this.FormatoLibroActivosReporte(); }
+                else if (CmbReporte.Text == "Prestamos Activos") { DgvReportes.DataSource = BPrestamo.Listar(); this.FormatoDgvPrestamoReporte(); }
+                else if (CmbReporte.Text == "") { this.MensajeError("Favor elegir una opcion"); }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
         }
     }
     
