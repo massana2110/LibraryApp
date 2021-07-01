@@ -95,6 +95,10 @@
       <Project>{a4fc6685-f877-4d52-b775-4d02f7893015}</Project>
       <Name>LibrarySystem.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.Data\LibrarySystem.Data.csproj">
+      <Project>{7DD07977-BBCF-4115-9D29-95E8C318B84F}</Project>
+      <Name>LibrarySystem.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LibrarySystem.Entities\LibrarySystem.Entities.csproj">
       <Project>{da440934-dc85-4229-8309-1f8ec8183c1f}</Project>
       <Name>LibrarySystem.Entities</Name>

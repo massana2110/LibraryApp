@@ -41,9 +41,13 @@ namespace LibrarySystem.Business
             DPrestamo Datas = new DPrestamo();
             return Datas.ActualizarDevolucion(Id);
         }
-        
 
+        public static string Eliminar(int Valor)
+        {
+            DPrestamo Datas = new DPrestamo();
+            return Datas.Eliminar(Valor);
         }
+    }
 
 
 

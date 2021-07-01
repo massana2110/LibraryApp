@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibrarySystem.Business;
 
@@ -36,7 +32,7 @@ namespace LibrarySystem.Presentation
 
         private void LimpiarMantenimiento()
         {
-            TxtID.Text = "";
+            
             TxtISBN.Text = "";
             TxtTitulo.Text = "";
             TxtAutor.Text = "";
@@ -141,13 +137,12 @@ namespace LibrarySystem.Presentation
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
-
-        private void ListarLibrosReportesTab()
+        private void ListarLibrosMantenimientoTab()
         {
             try
             {
-                DgvReportes.DataSource = BLibro.Listar();
-                this.FormatoLibrosConsulta();
+                DgvMantenimiento.DataSource = BLibro.Listar();
+                this.FormatoLibrosMantenimiento();
 
             }
             catch (Exception ex)
@@ -155,6 +150,8 @@ namespace LibrarySystem.Presentation
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
+
+
         private void BuscarLibrosPrestamosTab(string identificador)
         {
             try
@@ -209,18 +206,7 @@ namespace LibrarySystem.Presentation
             }
         }
 
-        private void ListarPrestamosReporte(string Id)
-        {
-            try
-            {
-                DgvReportes.DataSource = BPrestamo.Listar();
-                this.FormatoDgvPrestamoDevolucion();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + ex.StackTrace);
-            }
-        }
+     
 
         private void BuscarProfesor(string identificador)
         {
@@ -286,6 +272,25 @@ namespace LibrarySystem.Presentation
 
         }
 
+        private void FormatoLibrosMantenimiento()
+        {
+            DgvMantenimiento.Columns[0].Width = 50;
+            DgvMantenimiento.Columns[1].Visible = false;
+            DgvMantenimiento.Columns[2].Visible = false;
+            DgvMantenimiento.Columns[3].Visible = false;
+            DgvMantenimiento.Columns[4].Visible = false;
+            DgvMantenimiento.Columns[5].Visible = false;
+            DgvMantenimiento.Columns[6].Visible = false;
+            DgvMantenimiento.Columns[7].Visible = false;
+            DgvMantenimiento.Columns[8].Visible = false;
+            DgvMantenimiento.Columns[9].Visible = false;
+            DgvMantenimiento.Columns[10].Visible = false;
+            DgvMantenimiento.Columns[11].Visible = false;
+            DgvMantenimiento.Columns[12].Visible = false;
+            DgvMantenimiento.Columns[13].Visible = false;
+            DgvMantenimiento.Columns[13].Visible = false;
+
+        }
         private void FormatoProfesores()
         {
             DgvListProfesor.Columns[0].Width = 50;
@@ -464,6 +469,7 @@ namespace LibrarySystem.Presentation
             this.ListarLibrosDisponibles();
             this.ListarProfesores();
             this.ListarProfesoresDevolucion();
+            ListarLibrosMantenimientoTab();
             this.DgvListLibro.AllowUserToAddRows = false;
             this.DgvListLibrosConsultas.AllowUserToAddRows = false;
             this.DgvListProfesor.AllowUserToAddRows = false;
@@ -476,6 +482,8 @@ namespace LibrarySystem.Presentation
             DgvListProfesor.CurrentCell = null;
             this.DgvReportes.AllowUserToAddRows = false;
             DgvReportes.CurrentCell = null;
+            this.DgvMantenimiento.AllowUserToAddRows = false;
+            DgvMantenimiento.CurrentCell = null;
 
 
 
@@ -649,7 +657,7 @@ namespace LibrarySystem.Presentation
         private void tabPage3_Click(object sender, EventArgs e)
         {
             DgvPrestamosActivosDevolucion.CurrentCell = null;
-            DgvProfesoresDevolucion.CurrentCell = null;
+            
            
         }
 
@@ -787,8 +795,9 @@ namespace LibrarySystem.Presentation
                         this.MensajeOk("Se ingreso de forma correcta");
                         this.ListarLibrosConsultasTab();
                         this.ListarLibrosDisponibles();
+                        ListarLibrosMantenimientoTab();
 
-                       LimpiarMantenimiento();
+                        LimpiarMantenimiento();
 
                         
                     }
@@ -811,11 +820,20 @@ namespace LibrarySystem.Presentation
 
         private void button7_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 string Rpta = "";
-                if (
-                TxtID.Text == "" ||
+
+                 if (DgvMantenimiento.CurrentCell == null)
+                {
+
+                    this.MensajeError("Falta seleccionar ID");
+
+                }
+                else if (
+               
+                Convert.ToString(DgvMantenimiento.CurrentRow.Cells["ID"].Value) == "" ||
                 TxtISBN.Text == "" ||
                 TxtTitulo.Text == "" ||
                 TxtAutor.Text == "" ||
@@ -829,9 +847,10 @@ namespace LibrarySystem.Presentation
                 TxtUbicacion.Text == "" ||
                 TxtDescripcion.Text == "")
                 {
-                    this.MensajeError("Falta Llenar informacion");
+                    this.MensajeError("Falta añadir datos");
 
                 }
+               
 
                 else
                 {
@@ -839,7 +858,7 @@ namespace LibrarySystem.Presentation
 
                     Rpta = BLibro.Actualizar
                         (
-                    Convert.ToInt32(TxtID.Text.Trim()),
+                    Convert.ToInt32(DgvMantenimiento.CurrentRow.Cells["ID"].Value),
                     TxtISBN.Text.Trim(),
                     TxtTitulo.Text.Trim(),
                     TxtAutor.Text.Trim(),
@@ -860,6 +879,8 @@ namespace LibrarySystem.Presentation
                         this.MensajeOk("Se actualizo de forma correcta");
                         this.ListarLibrosConsultasTab();
                         this.ListarLibrosDisponibles();
+                        ListarLibrosMantenimientoTab();
+                        
 
                         LimpiarMantenimiento();
 
@@ -885,11 +906,28 @@ namespace LibrarySystem.Presentation
         {
             try
             {
+
+
                 string Rpta = "";
-                if (TxtID.Text == "" )
+
+
+                 if (DgvMantenimiento.CurrentCell == null)
+                {
+
+                    this.MensajeError("Falta seleccionar ID de libro a Eliminar");
+
+                }
+                else if (Convert.ToString(DgvMantenimiento.CurrentRow.Cells["ID"].Value) == "" )
                 
                 {
-                    this.MensajeError("Falta Llenar informacion de ID de Libro a eliminar");
+                    this.MensajeError("Falta seleccionar ID de libro a cual eliminar");
+
+                }
+
+                else if (Convert.ToBoolean(DgvMantenimiento.CurrentRow.Cells["Estado"].Value) == false)
+
+                {
+                    this.MensajeError("No se puede eliminar un libro que este alquilado");
 
                 }
 
@@ -899,8 +937,8 @@ namespace LibrarySystem.Presentation
 
                     Rpta = BLibro.Eliminar
                         (
-                    Convert.ToInt32(TxtID.Text.Trim())
-                   
+                    Convert.ToInt32(DgvMantenimiento.CurrentRow.Cells["ID"].Value)
+
                         );
 
                     if (Rpta.Equals("OK"))
@@ -908,6 +946,7 @@ namespace LibrarySystem.Presentation
                         this.MensajeOk("Se elimino sastifactoriamente");
                         this.ListarLibrosConsultasTab();
                         this.ListarLibrosDisponibles();
+                        ListarLibrosMantenimientoTab();
 
                         LimpiarMantenimiento();
 
@@ -942,6 +981,57 @@ namespace LibrarySystem.Presentation
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+        }
+
+        private void DgvReportes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+
+            
+           
+
+        }
+
+        private void DgvMantenimiento_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+            
+            DgvMantenimiento.CurrentCell = null;
+            LimpiarMantenimiento();
+        }
+
+        private void DgvMantenimiento_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            TxtISBN.Text = Convert.ToString(DgvMantenimiento.CurrentRow.Cells["ID"].Value);
+            TxtAutor.Text = Convert.ToString(DgvMantenimiento.CurrentRow.Cells["Autor"].Value);
+            TxtTitulo.Text = Convert.ToString(DgvMantenimiento.CurrentRow.Cells["Titulo"].Value);
+            TxtEditorial.Text = Convert.ToString(DgvMantenimiento.CurrentRow.Cells["Editorial"].Value);
+            TxtEdicion.Text = Convert.ToString(DgvMantenimiento.CurrentRow.Cells["Edicion"].Value);
+            TxtNumeroEdicion.Text = Convert.ToString(DgvMantenimiento.CurrentRow.Cells["#Edicion"].Value);
+            TxtPais.Text = Convert.ToString(DgvMantenimiento.CurrentRow.Cells["Pais"].Value);
+            TxtIdioma.Text = Convert.ToString(DgvMantenimiento.CurrentRow.Cells["Idioma"].Value);
+            TxtMateria.Text = Convert.ToString(DgvMantenimiento.CurrentRow.Cells["Materia"].Value);
+            TxtNumeroPaginas.Text = Convert.ToString(DgvMantenimiento.CurrentRow.Cells["#Paginas"].Value);
+            TxtUbicacion.Text = Convert.ToString(DgvMantenimiento.CurrentRow.Cells["Ubicacion"].Value);
+            TxtDescripcion.Text = Convert.ToString(DgvMantenimiento.CurrentRow.Cells["Descripcion"].Value);
+        }
+
+        private void CmbReporte_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox9_Enter(object sender, EventArgs e)
+        {
+
         }
     }
     

@@ -110,5 +110,30 @@ namespace LibrarySystem.Data
             return Rpta;
 
         }
+        public string Eliminar(int Id)
+        {
+            string Rpta = "";
+
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Connection.getInstance().createConnection();
+                SqlCommand Command = new SqlCommand("prestamo_eliminar", SqlCon);
+                Command.CommandType = CommandType.StoredProcedure;
+                Command.Parameters.Add("@idLibro", SqlDbType.Int).Value = Id;
+                SqlCon.Open();
+                Rpta = Command.ExecuteNonQuery() == 1 ? "OK" : "No se pudo eliminar el registro";
+            }
+            catch (Exception ex)
+            {
+                Rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
+
+        }
     }
 }
