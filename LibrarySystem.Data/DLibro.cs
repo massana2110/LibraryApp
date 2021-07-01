@@ -30,6 +30,55 @@ namespace LibrarySystem.Data
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
         }
+        public DataTable ListarDisponibles()
+        {
+            SqlDataReader Outcome;
+            DataTable Tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Connection.getInstance().createConnection();
+                SqlCommand Command = new SqlCommand("librosDisponibles_listar", SqlCon);
+                Command.CommandType = CommandType.StoredProcedure;
+                SqlCon.Open();
+                Outcome = Command.ExecuteReader();
+                Tabla.Load(Outcome);
+                return Tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
+
+        public DataTable ListarNoDisponibles()
+        {
+            SqlDataReader Outcome;
+            DataTable Tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Connection.getInstance().createConnection();
+                SqlCommand Command = new SqlCommand("librosNoDisponibles_listar", SqlCon);
+                Command.CommandType = CommandType.StoredProcedure;
+                SqlCon.Open();
+                Outcome = Command.ExecuteReader();
+                Tabla.Load(Outcome);
+                return Tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
         public DataTable BuscarTitulo(string Valor)
         {
             SqlDataReader Outcome;
@@ -105,6 +154,82 @@ namespace LibrarySystem.Data
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
         }
+
+        public DataTable BuscarTituloActivo(string Valor)
+        {
+            SqlDataReader Outcome;
+            DataTable Tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Connection.getInstance().createConnection();
+                SqlCommand Command = new SqlCommand("libroDisponible_buscarTitulo", SqlCon);
+                Command.CommandType = CommandType.StoredProcedure;
+                Command.Parameters.Add("@valor", SqlDbType.VarChar).Value = Valor;
+                SqlCon.Open();
+                Outcome = Command.ExecuteReader();
+                Tabla.Load(Outcome);
+                return Tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
+        public DataTable BuscarIdActivo(string Valor)
+        {
+            SqlDataReader Outcome;
+            DataTable Tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Connection.getInstance().createConnection();
+                SqlCommand Command = new SqlCommand("libroDisponible_buscarId", SqlCon);
+                Command.CommandType = CommandType.StoredProcedure;
+                Command.Parameters.Add("@valor", SqlDbType.VarChar).Value = Valor;
+                SqlCon.Open();
+                Outcome = Command.ExecuteReader();
+                Tabla.Load(Outcome);
+                return Tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
+        public DataTable BuscarAutorActivo(string Valor)
+        {
+            SqlDataReader Outcome;
+            DataTable Tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Connection.getInstance().createConnection();
+                SqlCommand Command = new SqlCommand("libroDisponible_buscarAutor", SqlCon);
+                Command.CommandType = CommandType.StoredProcedure;
+                Command.Parameters.Add("@valor", SqlDbType.VarChar).Value = Valor;
+                SqlCon.Open();
+                Outcome = Command.ExecuteReader();
+                Tabla.Load(Outcome);
+                return Tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
         public string Insertar(Libro obj)
         {
             string Rpta = "";
@@ -127,6 +252,7 @@ namespace LibrarySystem.Data
                 Command.Parameters.Add("@numeroPaginas", SqlDbType.Int).Value = obj.NumeroPaginas;
                 Command.Parameters.Add("@ubicacion", SqlDbType.VarChar).Value = obj.Ubicacion;
                 Command.Parameters.Add("@descripcion", SqlDbType.VarChar).Value = obj.Descripcion;
+                Command.Parameters.Add("@estado", SqlDbType.Bit).Value = obj.Estado;
 
                 SqlCon.Open();
                 Rpta = Command.ExecuteNonQuery() == 1 ? "OK" : "No se pudo ingresar el registro";
@@ -165,6 +291,7 @@ namespace LibrarySystem.Data
                 Command.Parameters.Add("@numeroPaginas", SqlDbType.Int).Value = obj.NumeroPaginas;
                 Command.Parameters.Add("@ubicacion", SqlDbType.VarChar).Value = obj.Ubicacion;
                 Command.Parameters.Add("@descripcion", SqlDbType.VarChar).Value = obj.Descripcion;
+                Command.Parameters.Add("@estado", SqlDbType.Bit).Value = obj.Estado;
 
                 SqlCon.Open();
                 Rpta = Command.ExecuteNonQuery() == 1 ? "OK" : "No se pudo actualizar el registro";
@@ -188,11 +315,63 @@ namespace LibrarySystem.Data
             try
             {
                 SqlCon = Connection.getInstance().createConnection();
-                SqlCommand Command = new SqlCommand("libro_elimiinar", SqlCon);
+                SqlCommand Command = new SqlCommand("libro_eliminar", SqlCon);
                 Command.CommandType = CommandType.StoredProcedure;
                 Command.Parameters.Add("@idLibro", SqlDbType.Int).Value = Id;
                 SqlCon.Open();
                 Rpta = Command.ExecuteNonQuery() == 1 ? "OK" : "No se pudo eliminar el registro";
+            }
+            catch (Exception ex)
+            {
+                Rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
+
+        }
+
+        public string ActivarEstado(int Id)
+        {
+            string Rpta = "";
+
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Connection.getInstance().createConnection();
+                SqlCommand Command = new SqlCommand("libro_activar", SqlCon);
+                Command.CommandType = CommandType.StoredProcedure;
+                Command.Parameters.Add("@idLibro", SqlDbType.Int).Value = Id;
+                SqlCon.Open();
+                Rpta = Command.ExecuteNonQuery() == 1 ? "OK" : "No se pudo desactivar el registro";
+            }
+            catch (Exception ex)
+            {
+                Rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
+
+        }
+
+        public string DesactivarEstado(int Id)
+        {
+            string Rpta = "";
+
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Connection.getInstance().createConnection();
+                SqlCommand Command = new SqlCommand("libro_desactivar", SqlCon);
+                Command.CommandType = CommandType.StoredProcedure;
+                Command.Parameters.Add("@idLibro", SqlDbType.Int).Value = Id;
+                SqlCon.Open();
+                Rpta = Command.ExecuteNonQuery() == 1 ? "OK" : "No se pudo desactivar el registro";
             }
             catch (Exception ex)
             {
