@@ -53,6 +53,13 @@ namespace LibrarySystem.Presentation
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.DgvReportes = new System.Windows.Forms.DataGridView();
+            this.CmbReporte = new System.Windows.Forms.ComboBox();
+            this.button9 = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
@@ -81,7 +88,6 @@ namespace LibrarySystem.Presentation
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.TxtID = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.TxtNumeroPaginas = new System.Windows.Forms.TextBox();
             this.TxtPais = new System.Windows.Forms.TextBox();
@@ -109,13 +115,7 @@ namespace LibrarySystem.Presentation
             this.label8 = new System.Windows.Forms.Label();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.label24 = new System.Windows.Forms.Label();
-            this.CmbReporte = new System.Windows.Forms.ComboBox();
-            this.DgvReportes = new System.Windows.Forms.DataGridView();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.DgvMantenimiento = new System.Windows.Forms.DataGridView();
             this.statusStrip.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -126,6 +126,8 @@ namespace LibrarySystem.Presentation
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListLibro)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvReportes)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -140,8 +142,7 @@ namespace LibrarySystem.Presentation
             this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.groupBox11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvReportes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvMantenimiento)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip
@@ -169,11 +170,12 @@ namespace LibrarySystem.Presentation
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1228, 584);
             this.tabControl1.TabIndex = 3;
+            this.tabControl1.Click += new System.EventHandler(this.tabControl1_Click);
             // 
             // tabPage1
             // 
@@ -184,9 +186,9 @@ namespace LibrarySystem.Presentation
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage1.Size = new System.Drawing.Size(1220, 558);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Préstamo";
@@ -197,7 +199,7 @@ namespace LibrarySystem.Presentation
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(918, 518);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(290, 30);
             this.button3.TabIndex = 10;
@@ -219,7 +221,7 @@ namespace LibrarySystem.Presentation
             // DatePickerDevolucion
             // 
             this.DatePickerDevolucion.Location = new System.Drawing.Point(918, 349);
-            this.DatePickerDevolucion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DatePickerDevolucion.Margin = new System.Windows.Forms.Padding(2);
             this.DatePickerDevolucion.Name = "DatePickerDevolucion";
             this.DatePickerDevolucion.Size = new System.Drawing.Size(290, 20);
             this.DatePickerDevolucion.TabIndex = 3;
@@ -231,9 +233,9 @@ namespace LibrarySystem.Presentation
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(7, 318);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(891, 230);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
@@ -243,7 +245,7 @@ namespace LibrarySystem.Presentation
             // 
             this.DgvListPrestamo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListPrestamo.Location = new System.Drawing.Point(69, 32);
-            this.DgvListPrestamo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DgvListPrestamo.Margin = new System.Windows.Forms.Padding(2);
             this.DgvListPrestamo.Name = "DgvListPrestamo";
             this.DgvListPrestamo.RowHeadersWidth = 51;
             this.DgvListPrestamo.RowTemplate.Height = 24;
@@ -258,9 +260,9 @@ namespace LibrarySystem.Presentation
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(688, 24);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(520, 266);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
@@ -270,7 +272,7 @@ namespace LibrarySystem.Presentation
             // 
             this.DgvListProfesor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListProfesor.Location = new System.Drawing.Point(12, 109);
-            this.DgvListProfesor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DgvListProfesor.Margin = new System.Windows.Forms.Padding(2);
             this.DgvListProfesor.Name = "DgvListProfesor";
             this.DgvListProfesor.RowHeadersWidth = 51;
             this.DgvListProfesor.RowTemplate.Height = 24;
@@ -285,7 +287,7 @@ namespace LibrarySystem.Presentation
             // 
             this.BtnBuscarProfesor.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnBuscarProfesor.Location = new System.Drawing.Point(384, 59);
-            this.BtnBuscarProfesor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnBuscarProfesor.Margin = new System.Windows.Forms.Padding(2);
             this.BtnBuscarProfesor.Name = "BtnBuscarProfesor";
             this.BtnBuscarProfesor.Size = new System.Drawing.Size(101, 30);
             this.BtnBuscarProfesor.TabIndex = 10;
@@ -296,7 +298,7 @@ namespace LibrarySystem.Presentation
             // TxtProfesor
             // 
             this.TxtProfesor.Location = new System.Drawing.Point(16, 66);
-            this.TxtProfesor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtProfesor.Margin = new System.Windows.Forms.Padding(2);
             this.TxtProfesor.Name = "TxtProfesor";
             this.TxtProfesor.Size = new System.Drawing.Size(301, 27);
             this.TxtProfesor.TabIndex = 8;
@@ -322,9 +324,9 @@ namespace LibrarySystem.Presentation
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(7, 24);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(662, 266);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -335,7 +337,7 @@ namespace LibrarySystem.Presentation
             // 
             this.DgvListLibro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListLibro.Location = new System.Drawing.Point(16, 109);
-            this.DgvListLibro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DgvListLibro.Margin = new System.Windows.Forms.Padding(2);
             this.DgvListLibro.Name = "DgvListLibro";
             this.DgvListLibro.RowHeadersWidth = 51;
             this.DgvListLibro.RowTemplate.Height = 24;
@@ -347,7 +349,7 @@ namespace LibrarySystem.Presentation
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(521, 62);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(120, 30);
             this.button1.TabIndex = 9;
@@ -363,7 +365,7 @@ namespace LibrarySystem.Presentation
             "Titulo",
             "Autor"});
             this.CmbLibro.Location = new System.Drawing.Point(367, 66);
-            this.CmbLibro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CmbLibro.Margin = new System.Windows.Forms.Padding(2);
             this.CmbLibro.Name = "CmbLibro";
             this.CmbLibro.Size = new System.Drawing.Size(109, 28);
             this.CmbLibro.TabIndex = 8;
@@ -371,7 +373,7 @@ namespace LibrarySystem.Presentation
             // TxtLibro
             // 
             this.TxtLibro.Location = new System.Drawing.Point(16, 66);
-            this.TxtLibro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtLibro.Margin = new System.Windows.Forms.Padding(2);
             this.TxtLibro.Name = "TxtLibro";
             this.TxtLibro.Size = new System.Drawing.Size(311, 27);
             this.TxtLibro.TabIndex = 7;
@@ -404,19 +406,102 @@ namespace LibrarySystem.Presentation
             // 
             this.tabPage2.Controls.Add(this.groupBox11);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage2.Size = new System.Drawing.Size(1220, 558);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Reportes";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.button11);
+            this.groupBox11.Controls.Add(this.button10);
+            this.groupBox11.Controls.Add(this.DgvReportes);
+            this.groupBox11.Controls.Add(this.CmbReporte);
+            this.groupBox11.Controls.Add(this.button9);
+            this.groupBox11.Controls.Add(this.label24);
+            this.groupBox11.Font = new System.Drawing.Font("Minecraft", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox11.Location = new System.Drawing.Point(21, 23);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(1176, 513);
+            this.groupBox11.TabIndex = 0;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Reportes";
+            // 
+            // button11
+            // 
+            this.button11.Font = new System.Drawing.Font("Minecraft", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.Location = new System.Drawing.Point(947, 410);
+            this.button11.Margin = new System.Windows.Forms.Padding(2);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(136, 30);
+            this.button11.TabIndex = 9;
+            this.button11.Text = "Imprimir";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Font = new System.Drawing.Font("Minecraft", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.Location = new System.Drawing.Point(947, 273);
+            this.button10.Margin = new System.Windows.Forms.Padding(2);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(136, 30);
+            this.button10.TabIndex = 8;
+            this.button10.Text = "Guardar";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // DgvReportes
+            // 
+            this.DgvReportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvReportes.Location = new System.Drawing.Point(0, 218);
+            this.DgvReportes.Name = "DgvReportes";
+            this.DgvReportes.RowHeadersWidth = 51;
+            this.DgvReportes.Size = new System.Drawing.Size(849, 289);
+            this.DgvReportes.TabIndex = 7;
+            this.DgvReportes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvReportes_CellContentClick);
+            // 
+            // CmbReporte
+            // 
+            this.CmbReporte.FormattingEnabled = true;
+            this.CmbReporte.Items.AddRange(new object[] {
+            "Libros Registrados",
+            "Prestamos Activos"});
+            this.CmbReporte.Location = new System.Drawing.Point(373, 84);
+            this.CmbReporte.Name = "CmbReporte";
+            this.CmbReporte.Size = new System.Drawing.Size(396, 34);
+            this.CmbReporte.TabIndex = 6;
+            this.CmbReporte.SelectedIndexChanged += new System.EventHandler(this.CmbReporte_SelectedIndexChanged);
+            // 
+            // button9
+            // 
+            this.button9.Font = new System.Drawing.Font("Minecraft", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Location = new System.Drawing.Point(861, 88);
+            this.button9.Margin = new System.Windows.Forms.Padding(2);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(136, 30);
+            this.button9.TabIndex = 5;
+            this.button9.Text = "Buscar";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Minecraft", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(369, 46);
+            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(400, 21);
+            this.label24.TabIndex = 3;
+            this.label24.Text = "Mostrar Reportes Libros/Prestamos";
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.groupBox5);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1220, 558);
             this.tabPage3.TabIndex = 2;
@@ -431,9 +516,9 @@ namespace LibrarySystem.Presentation
             this.groupBox5.Controls.Add(this.groupBox6);
             this.groupBox5.Font = new System.Drawing.Font("Minecraft", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(16, 16);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox5.Size = new System.Drawing.Size(1187, 531);
             this.groupBox5.TabIndex = 0;
             this.groupBox5.TabStop = false;
@@ -444,7 +529,7 @@ namespace LibrarySystem.Presentation
             // 
             this.button5.Font = new System.Drawing.Font("Minecraft", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.Location = new System.Drawing.Point(929, 479);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(211, 32);
             this.button5.TabIndex = 4;
@@ -457,9 +542,9 @@ namespace LibrarySystem.Presentation
             this.groupBox7.Controls.Add(this.DgvPrestamosActivosDevolucion);
             this.groupBox7.Font = new System.Drawing.Font("Minecraft", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(622, 95);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox7.Size = new System.Drawing.Size(551, 344);
             this.groupBox7.TabIndex = 1;
             this.groupBox7.TabStop = false;
@@ -469,7 +554,7 @@ namespace LibrarySystem.Presentation
             // 
             this.DgvPrestamosActivosDevolucion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvPrestamosActivosDevolucion.Location = new System.Drawing.Point(25, 66);
-            this.DgvPrestamosActivosDevolucion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DgvPrestamosActivosDevolucion.Margin = new System.Windows.Forms.Padding(2);
             this.DgvPrestamosActivosDevolucion.Name = "DgvPrestamosActivosDevolucion";
             this.DgvPrestamosActivosDevolucion.RowHeadersWidth = 51;
             this.DgvPrestamosActivosDevolucion.RowTemplate.Height = 24;
@@ -485,9 +570,9 @@ namespace LibrarySystem.Presentation
             this.groupBox6.Controls.Add(this.label7);
             this.groupBox6.Font = new System.Drawing.Font("Minecraft", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(35, 49);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox6.Size = new System.Drawing.Size(543, 390);
             this.groupBox6.TabIndex = 0;
             this.groupBox6.TabStop = false;
@@ -497,7 +582,7 @@ namespace LibrarySystem.Presentation
             // 
             this.DgvProfesoresDevolucion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvProfesoresDevolucion.Location = new System.Drawing.Point(27, 112);
-            this.DgvProfesoresDevolucion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DgvProfesoresDevolucion.Margin = new System.Windows.Forms.Padding(2);
             this.DgvProfesoresDevolucion.Name = "DgvProfesoresDevolucion";
             this.DgvProfesoresDevolucion.RowHeadersWidth = 51;
             this.DgvProfesoresDevolucion.RowTemplate.Height = 24;
@@ -511,7 +596,7 @@ namespace LibrarySystem.Presentation
             // 
             this.button4.Font = new System.Drawing.Font("Minecraft", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(404, 66);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(113, 29);
             this.button4.TabIndex = 2;
@@ -523,7 +608,7 @@ namespace LibrarySystem.Presentation
             // 
             this.TxtDevolucion.Font = new System.Drawing.Font("Minecraft", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtDevolucion.Location = new System.Drawing.Point(27, 69);
-            this.TxtDevolucion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtDevolucion.Margin = new System.Windows.Forms.Padding(2);
             this.TxtDevolucion.Name = "TxtDevolucion";
             this.TxtDevolucion.Size = new System.Drawing.Size(341, 32);
             this.TxtDevolucion.TabIndex = 1;
@@ -543,7 +628,7 @@ namespace LibrarySystem.Presentation
             // 
             this.tabPage4.Controls.Add(this.groupBox4);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(1220, 558);
             this.tabPage4.TabIndex = 3;
@@ -560,9 +645,9 @@ namespace LibrarySystem.Presentation
             this.groupBox4.Controls.Add(this.DgvListLibrosConsultas);
             this.groupBox4.Font = new System.Drawing.Font("Minecraft", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(16, 12);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.Size = new System.Drawing.Size(1185, 535);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
@@ -595,7 +680,7 @@ namespace LibrarySystem.Presentation
             // 
             this.button2.Font = new System.Drawing.Font("Minecraft", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(743, 85);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(114, 33);
             this.button2.TabIndex = 3;
@@ -607,7 +692,7 @@ namespace LibrarySystem.Presentation
             // 
             this.TxtConsulta.Font = new System.Drawing.Font("Minecraft", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtConsulta.Location = new System.Drawing.Point(30, 85);
-            this.TxtConsulta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtConsulta.Margin = new System.Windows.Forms.Padding(2);
             this.TxtConsulta.Name = "TxtConsulta";
             this.TxtConsulta.Size = new System.Drawing.Size(372, 37);
             this.TxtConsulta.TabIndex = 2;
@@ -621,7 +706,7 @@ namespace LibrarySystem.Presentation
             "Codigo",
             "Autor"});
             this.CmbConsulta.Location = new System.Drawing.Point(492, 85);
-            this.CmbConsulta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CmbConsulta.Margin = new System.Windows.Forms.Padding(2);
             this.CmbConsulta.Name = "CmbConsulta";
             this.CmbConsulta.Size = new System.Drawing.Size(138, 38);
             this.CmbConsulta.TabIndex = 1;
@@ -630,7 +715,7 @@ namespace LibrarySystem.Presentation
             // 
             this.DgvListLibrosConsultas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListLibrosConsultas.Location = new System.Drawing.Point(5, 198);
-            this.DgvListLibrosConsultas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DgvListLibrosConsultas.Margin = new System.Windows.Forms.Padding(2);
             this.DgvListLibrosConsultas.Name = "DgvListLibrosConsultas";
             this.DgvListLibrosConsultas.RowHeadersWidth = 51;
             this.DgvListLibrosConsultas.RowTemplate.Height = 24;
@@ -642,7 +727,7 @@ namespace LibrarySystem.Presentation
             // 
             this.tabPage5.Controls.Add(this.groupBox8);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(1220, 558);
             this.tabPage5.TabIndex = 4;
@@ -651,9 +736,9 @@ namespace LibrarySystem.Presentation
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.DgvMantenimiento);
             this.groupBox8.Controls.Add(this.groupBox10);
             this.groupBox8.Controls.Add(this.groupBox9);
-            this.groupBox8.Controls.Add(this.TxtID);
             this.groupBox8.Controls.Add(this.label20);
             this.groupBox8.Controls.Add(this.TxtNumeroPaginas);
             this.groupBox8.Controls.Add(this.TxtPais);
@@ -681,9 +766,9 @@ namespace LibrarySystem.Presentation
             this.groupBox8.Controls.Add(this.label8);
             this.groupBox8.Font = new System.Drawing.Font("Minecraft", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox8.Location = new System.Drawing.Point(18, 24);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox8.Size = new System.Drawing.Size(1184, 522);
             this.groupBox8.TabIndex = 0;
             this.groupBox8.TabStop = false;
@@ -696,9 +781,9 @@ namespace LibrarySystem.Presentation
             this.groupBox10.Controls.Add(this.label22);
             this.groupBox10.Controls.Add(this.label21);
             this.groupBox10.Location = new System.Drawing.Point(29, 401);
-            this.groupBox10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox10.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox10.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox10.Size = new System.Drawing.Size(574, 116);
             this.groupBox10.TabIndex = 32;
             this.groupBox10.TabStop = false;
@@ -741,18 +826,19 @@ namespace LibrarySystem.Presentation
             this.groupBox9.Controls.Add(this.button7);
             this.groupBox9.Controls.Add(this.button6);
             this.groupBox9.Location = new System.Drawing.Point(608, 401);
-            this.groupBox9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox9.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox9.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox9.Size = new System.Drawing.Size(562, 116);
             this.groupBox9.TabIndex = 31;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Acciones";
+            this.groupBox9.Enter += new System.EventHandler(this.groupBox9_Enter);
             // 
             // button8
             // 
             this.button8.Location = new System.Drawing.Point(412, 48);
-            this.button8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(118, 27);
             this.button8.TabIndex = 32;
@@ -763,7 +849,7 @@ namespace LibrarySystem.Presentation
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(230, 48);
-            this.button7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(118, 27);
             this.button7.TabIndex = 31;
@@ -774,7 +860,7 @@ namespace LibrarySystem.Presentation
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(31, 48);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(118, 27);
             this.button6.TabIndex = 30;
@@ -782,21 +868,10 @@ namespace LibrarySystem.Presentation
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // TxtID
-            // 
-            this.TxtID.Location = new System.Drawing.Point(1039, 176);
-            this.TxtID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.TxtID.MaxLength = 5;
-            this.TxtID.Name = "TxtID";
-            this.TxtID.Size = new System.Drawing.Size(42, 28);
-            this.TxtID.TabIndex = 29;
-            this.TxtID.TextChanged += new System.EventHandler(this.textBox13_TextChanged);
-            this.TxtID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtID_KeyPress);
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(917, 178);
+            this.label20.Location = new System.Drawing.Point(912, 79);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(126, 21);
@@ -807,7 +882,7 @@ namespace LibrarySystem.Presentation
             // TxtNumeroPaginas
             // 
             this.TxtNumeroPaginas.Location = new System.Drawing.Point(638, 215);
-            this.TxtNumeroPaginas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtNumeroPaginas.Margin = new System.Windows.Forms.Padding(2);
             this.TxtNumeroPaginas.MaxLength = 3;
             this.TxtNumeroPaginas.Name = "TxtNumeroPaginas";
             this.TxtNumeroPaginas.Size = new System.Drawing.Size(191, 28);
@@ -817,7 +892,7 @@ namespace LibrarySystem.Presentation
             // TxtPais
             // 
             this.TxtPais.Location = new System.Drawing.Point(638, 39);
-            this.TxtPais.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtPais.Margin = new System.Windows.Forms.Padding(2);
             this.TxtPais.Name = "TxtPais";
             this.TxtPais.Size = new System.Drawing.Size(191, 28);
             this.TxtPais.TabIndex = 26;
@@ -825,7 +900,7 @@ namespace LibrarySystem.Presentation
             // TxtIdioma
             // 
             this.TxtIdioma.Location = new System.Drawing.Point(638, 93);
-            this.TxtIdioma.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtIdioma.Margin = new System.Windows.Forms.Padding(2);
             this.TxtIdioma.Name = "TxtIdioma";
             this.TxtIdioma.Size = new System.Drawing.Size(191, 28);
             this.TxtIdioma.TabIndex = 25;
@@ -833,7 +908,7 @@ namespace LibrarySystem.Presentation
             // TxtMateria
             // 
             this.TxtMateria.Location = new System.Drawing.Point(638, 151);
-            this.TxtMateria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtMateria.Margin = new System.Windows.Forms.Padding(2);
             this.TxtMateria.Name = "TxtMateria";
             this.TxtMateria.Size = new System.Drawing.Size(191, 28);
             this.TxtMateria.TabIndex = 24;
@@ -841,7 +916,7 @@ namespace LibrarySystem.Presentation
             // TxtDescripcion
             // 
             this.TxtDescripcion.Location = new System.Drawing.Point(638, 349);
-            this.TxtDescripcion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtDescripcion.Margin = new System.Windows.Forms.Padding(2);
             this.TxtDescripcion.Name = "TxtDescripcion";
             this.TxtDescripcion.Size = new System.Drawing.Size(191, 28);
             this.TxtDescripcion.TabIndex = 23;
@@ -859,7 +934,7 @@ namespace LibrarySystem.Presentation
             // TxtUbicacion
             // 
             this.TxtUbicacion.Location = new System.Drawing.Point(170, 353);
-            this.TxtUbicacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtUbicacion.Margin = new System.Windows.Forms.Padding(2);
             this.TxtUbicacion.Name = "TxtUbicacion";
             this.TxtUbicacion.Size = new System.Drawing.Size(191, 28);
             this.TxtUbicacion.TabIndex = 21;
@@ -908,7 +983,7 @@ namespace LibrarySystem.Presentation
             // TxtTitulo
             // 
             this.TxtTitulo.Location = new System.Drawing.Point(170, 93);
-            this.TxtTitulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtTitulo.Margin = new System.Windows.Forms.Padding(2);
             this.TxtTitulo.Name = "TxtTitulo";
             this.TxtTitulo.Size = new System.Drawing.Size(191, 28);
             this.TxtTitulo.TabIndex = 16;
@@ -916,7 +991,7 @@ namespace LibrarySystem.Presentation
             // TxtAutor
             // 
             this.TxtAutor.Location = new System.Drawing.Point(170, 154);
-            this.TxtAutor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtAutor.Margin = new System.Windows.Forms.Padding(2);
             this.TxtAutor.Name = "TxtAutor";
             this.TxtAutor.Size = new System.Drawing.Size(191, 28);
             this.TxtAutor.TabIndex = 15;
@@ -924,7 +999,7 @@ namespace LibrarySystem.Presentation
             // TxtEditorial
             // 
             this.TxtEditorial.Location = new System.Drawing.Point(170, 215);
-            this.TxtEditorial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtEditorial.Margin = new System.Windows.Forms.Padding(2);
             this.TxtEditorial.Name = "TxtEditorial";
             this.TxtEditorial.Size = new System.Drawing.Size(191, 28);
             this.TxtEditorial.TabIndex = 14;
@@ -932,7 +1007,7 @@ namespace LibrarySystem.Presentation
             // TxtEdicion
             // 
             this.TxtEdicion.Location = new System.Drawing.Point(170, 286);
-            this.TxtEdicion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtEdicion.Margin = new System.Windows.Forms.Padding(2);
             this.TxtEdicion.MaxLength = 4;
             this.TxtEdicion.Name = "TxtEdicion";
             this.TxtEdicion.Size = new System.Drawing.Size(191, 28);
@@ -942,7 +1017,7 @@ namespace LibrarySystem.Presentation
             // TxtNumeroEdicion
             // 
             this.TxtNumeroEdicion.Location = new System.Drawing.Point(638, 286);
-            this.TxtNumeroEdicion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtNumeroEdicion.Margin = new System.Windows.Forms.Padding(2);
             this.TxtNumeroEdicion.MaxLength = 4;
             this.TxtNumeroEdicion.Name = "TxtNumeroEdicion";
             this.TxtNumeroEdicion.Size = new System.Drawing.Size(191, 28);
@@ -1012,7 +1087,7 @@ namespace LibrarySystem.Presentation
             // TxtISBN
             // 
             this.TxtISBN.Location = new System.Drawing.Point(170, 39);
-            this.TxtISBN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtISBN.Margin = new System.Windows.Forms.Padding(2);
             this.TxtISBN.Name = "TxtISBN";
             this.TxtISBN.Size = new System.Drawing.Size(191, 28);
             this.TxtISBN.TabIndex = 1;
@@ -1048,86 +1123,17 @@ namespace LibrarySystem.Presentation
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // groupBox11
+            // DgvMantenimiento
             // 
-            this.groupBox11.Controls.Add(this.button11);
-            this.groupBox11.Controls.Add(this.button10);
-            this.groupBox11.Controls.Add(this.DgvReportes);
-            this.groupBox11.Controls.Add(this.CmbReporte);
-            this.groupBox11.Controls.Add(this.button9);
-            this.groupBox11.Controls.Add(this.label24);
-            this.groupBox11.Font = new System.Drawing.Font("Minecraft", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox11.Location = new System.Drawing.Point(21, 23);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(1176, 513);
-            this.groupBox11.TabIndex = 0;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Reportes";
-            // 
-            // button9
-            // 
-            this.button9.Font = new System.Drawing.Font("Minecraft", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(861, 88);
-            this.button9.Margin = new System.Windows.Forms.Padding(2);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(136, 30);
-            this.button9.TabIndex = 5;
-            this.button9.Text = "Buscar";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Minecraft", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(369, 46);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(400, 21);
-            this.label24.TabIndex = 3;
-            this.label24.Text = "Mostrar Reportes Libros/Prestamos";
-            // 
-            // CmbReporte
-            // 
-            this.CmbReporte.FormattingEnabled = true;
-            this.CmbReporte.Items.AddRange(new object[] {
-            "Libros Registrados",
-            "Prestamos Activos"});
-            this.CmbReporte.Location = new System.Drawing.Point(373, 84);
-            this.CmbReporte.Name = "CmbReporte";
-            this.CmbReporte.Size = new System.Drawing.Size(396, 34);
-            this.CmbReporte.TabIndex = 6;
-            // 
-            // DgvReportes
-            // 
-            this.DgvReportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvReportes.Location = new System.Drawing.Point(0, 218);
-            this.DgvReportes.Name = "DgvReportes";
-            this.DgvReportes.RowHeadersWidth = 51;
-            this.DgvReportes.Size = new System.Drawing.Size(849, 289);
-            this.DgvReportes.TabIndex = 7;
-            // 
-            // button10
-            // 
-            this.button10.Font = new System.Drawing.Font("Minecraft", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(947, 273);
-            this.button10.Margin = new System.Windows.Forms.Padding(2);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(136, 30);
-            this.button10.TabIndex = 8;
-            this.button10.Text = "Guardar";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // button11
-            // 
-            this.button11.Font = new System.Drawing.Font("Minecraft", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(947, 410);
-            this.button11.Margin = new System.Windows.Forms.Padding(2);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(136, 30);
-            this.button11.TabIndex = 9;
-            this.button11.Text = "Imprimir";
-            this.button11.UseVisualStyleBackColor = true;
+            this.DgvMantenimiento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvMantenimiento.Location = new System.Drawing.Point(916, 120);
+            this.DgvMantenimiento.Name = "DgvMantenimiento";
+            this.DgvMantenimiento.RowHeadersWidth = 51;
+            this.DgvMantenimiento.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvMantenimiento.Size = new System.Drawing.Size(102, 150);
+            this.DgvMantenimiento.TabIndex = 33;
+            this.DgvMantenimiento.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvMantenimiento_CellClick);
+            this.DgvMantenimiento.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvMantenimiento_CellContentClick);
             // 
             // FmPrincipal
             // 
@@ -1157,6 +1163,9 @@ namespace LibrarySystem.Presentation
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListLibro)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvReportes)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
@@ -1176,9 +1185,7 @@ namespace LibrarySystem.Presentation
             this.groupBox9.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvReportes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvMantenimiento)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1245,7 +1252,6 @@ namespace LibrarySystem.Presentation
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox TxtID;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox TxtNumeroPaginas;
         private System.Windows.Forms.TextBox TxtPais;
@@ -1270,6 +1276,7 @@ namespace LibrarySystem.Presentation
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.DataGridView DgvReportes;
+        private System.Windows.Forms.DataGridView DgvMantenimiento;
     }
 }
 
